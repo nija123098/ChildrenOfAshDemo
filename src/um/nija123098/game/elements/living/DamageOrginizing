@@ -1,0 +1,10 @@
+ARCANE   - countered by intelligence - only heals in magic arias
+PSYCHIC  - countered by intelligence - does slow real damage over time, heals slowly as to mount
+ENERGY   - countered by strength     - deals more damage while waring more metal, heals quickly with more metal
+NECROTIC - countered by strength     - requires meds and time, basically bacterial
+POISON   - countered by toughness    - requires cure or heals slowly over time
+PIERCING - countered by toughness    - immediate and over time damage, heals quickly with bandage
+BLUGING  - countered by agility      - heals after inactivity
+BENDING  - countered by agility      - lots of damage results in BLUGING damage, deals no damage otherwise
+CHARM    - countered by constitution - heals over a long time, real damage only when psychic damage activates it
+TEMP     - countered by constitution - damage based on temp, does not heal at extremes
