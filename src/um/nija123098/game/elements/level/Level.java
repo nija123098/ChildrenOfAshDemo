@@ -1,5 +1,6 @@
 package um.nija123098.game.elements.level;
 
+import um.nija123098.game.elements.NamedObject;
 import um.nija123098.game.elements.Tickable;
 import um.nija123098.game.elements.floor.Floor;
 import um.nija123098.game.elements.floor.floors.StoneFloor;
@@ -18,18 +19,19 @@ import java.util.ArrayList;
 /**
  * Made by Dev on 12/19/2015
  */
-public class Level implements Tickable/*,DegreeComparable<Level>*/{
+public class Level extends NamedObject implements Tickable/*,DegreeComparable<Level>*/{
     public ArrayList<DungeonObject> looseObjects;
     public ArrayList<Living> livings;
     public Floor[][] floor;
-    public Level(Floor[][] floor, ArrayList<DungeonObject> looseObjects, ArrayList<Living> livings){
+    public Level(String name,Floor[][] floor, ArrayList<DungeonObject> looseObjects, ArrayList<Living> livings){
+        super(name);
         this.floor = floor;
         this.looseObjects = looseObjects;
         this.livings = livings;
     }
     @TestComponent
     public Level(){
-        this(new Floor[10][10], new ArrayList<DungeonObject>(1), new ArrayList<Living>(1));
+        this("Some non uniquely named level", new Floor[10][10], new ArrayList<DungeonObject>(1), new ArrayList<Living>(1));
         for (int x = 0; x < this.floor.length; x++){
             for (int y = 0; y < this.floor[0].length; y++){
                 if (x == 0 || y == 0 || x == this.floor.length-1 || y == this.floor[0].length-1){

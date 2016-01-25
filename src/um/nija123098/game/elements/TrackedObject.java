@@ -11,10 +11,6 @@ public class TrackedObject {
     }
     private static ArrayList<TrackedObject> trackedObjects = new ArrayList<TrackedObject>(50);
     public static void tickAll(){
-        for (TrackedObject trackedObject : trackedObjects){
-            if (trackedObject instanceof Tickable){
-                ((Tickable) trackedObject).tick();
-            }
-        }
+        trackedObjects.stream().filter(trackedObject -> trackedObject instanceof Tickable).forEach(trackedObject -> ((Tickable) trackedObject).tick());
     }
 }
