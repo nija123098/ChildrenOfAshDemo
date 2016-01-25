@@ -1,5 +1,6 @@
 package um.nija123098.game.elements.level;
 
+import um.nija123098.game.elements.Tickable;
 import um.nija123098.game.elements.floor.Floor;
 import um.nija123098.game.elements.floor.floors.StoneFloor;
 import um.nija123098.game.elements.floor.walls.StoneWall;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 /**
  * Made by Dev on 12/19/2015
  */
-public class Level/* implements DegreeComparable<Level>*/{
+public class Level implements Tickable/*,DegreeComparable<Level>*/{
     public ArrayList<DungeonObject> looseObjects;
     public ArrayList<Living> livings;
     public Floor[][] floor;
@@ -40,6 +41,24 @@ public class Level/* implements DegreeComparable<Level>*/{
         }
         this.livings.add(new TestPoof(new Location(this, 5, 5)));
         this.looseObjects.add(new Projectile(new PoofArmor(null), new Vec(1f, 1f), 1f));
+    }
+    @Override
+    public void tick() {
+        for (DungeonObject dungeonObject : this.looseObjects){
+            if (dungeonObject instanceof Tickable){
+                ((Tickable) dungeonObject).tick();
+            }
+        }
+        for (Living living : this.livings){
+            living.tick();
+        }
+        for (Floor[] floorX : this.floor){
+            for (Floor floor : floorX){
+                if (floor instanceof Tickable){
+                    ((Tickable) floor).tick();
+                }
+            }
+        }
     }
     public DungeonObject[] objectsAt(Location location){
         return this.objectsAt(location.x, location.y);

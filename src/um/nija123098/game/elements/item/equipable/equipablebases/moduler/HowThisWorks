@@ -1,0 +1,24 @@
+Ya, I am working on that.
+I expect this will require
+several lost hours and rewrites.
+
+Have a base object called
+abstract XBase{
+//with variables
+XBase[] bases;
+Collection<XAction> states;
+
+public XBase(XBase...bases){
+this.bases = bases;
+}
+
+//with functions
+public void done(XAction a){
+this.states.add(a)
+}
+}
+enum XAction{
+    POWERED,
+    HEATED,
+    ECT,
+}

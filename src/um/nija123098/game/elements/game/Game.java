@@ -7,7 +7,7 @@ import um.nija123098.test.TestComponent;
 /**
  * Made by Dev on 12/19/2015
  */
-public class Game {
+public class Game{
     public Player player;
     public Dungeon dungeon;
     public Game(Dungeon dungeon, Player player){
@@ -17,6 +17,7 @@ public class Game {
     @TestComponent
     public Game(){
         this.dungeon = new Dungeon();
-        this.player = new Player(dungeon.floors[0].getSpawn());
+        this.player = new Player(dungeon.levels[0].getSpawn());
     }
+
 }

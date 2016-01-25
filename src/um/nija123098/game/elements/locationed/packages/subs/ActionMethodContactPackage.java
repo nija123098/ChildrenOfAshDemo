@@ -5,7 +5,6 @@ import um.nija123098.game.elements.living.Living;
 import um.nija123098.game.elements.locationed.DungeonObject;
 import um.nija123098.game.elements.locationed.Location;
 import um.nija123098.game.elements.locationed.packages.Package;
-import um.nija123098.resorce.Vec;
 
 import java.util.ArrayList;
 
@@ -14,8 +13,8 @@ import java.util.ArrayList;
  */
 public class ActionMethodContactPackage extends Package {
     public ActionMethod actionMethod;
-    public Vec attackDirection;
-    public ActionMethodContactPackage(Location originLocation, ActionMethod actionMethod, Vec attackDirection, Living origin, ArrayList<DungeonObject> affected) {
+    public int attackDirection;
+    public ActionMethodContactPackage(Location originLocation, ActionMethod actionMethod, int attackDirection, Living origin, ArrayList<DungeonObject> affected) {
         super(originLocation, origin, affected);
         this.actionMethod = actionMethod;
         this.attackDirection = attackDirection;

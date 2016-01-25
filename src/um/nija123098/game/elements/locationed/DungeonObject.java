@@ -6,19 +6,17 @@ import um.nija123098.game.elements.locationed.packages.subs.ActionMethodContactP
 import um.nija123098.game.elements.locationed.packages.subs.StompPackage;
 import um.nija123098.game.elements.locationed.packages.subs.ThrowObjectPackage;
 import um.nija123098.game.elements.locationed.packages.subs.WalkContactPackage;
+import um.nija123098.resorce.Rand;
 
 /**
  * Made by Dev on 12/19/2015
  */
 public abstract class DungeonObject extends NamedObject /*implements DegreeComparable<DungeonObject>*/{
+    public int direction = Rand.getRand(359);
     public Location location;
     public DungeonObject(String name, Location location){
         super(name);
         this.location = location;
-    }
-    @Deprecated
-    public DungeonObject(Location location){
-        this("Dungeon Object", location);
     }
     public void stompedOn(StompPackage stompPackage){// um
 

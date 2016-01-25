@@ -1,18 +1,25 @@
 package um.nija123098.game.elements.dungeon;
 
+import um.nija123098.game.elements.Tickable;
 import um.nija123098.game.elements.level.Level;
 import um.nija123098.test.TestComponent;
 
 /**
  * Made by Dev on 12/19/2015
  */
-public class Dungeon {
-    public Level[] floors;
-    public Dungeon(Level[] floors){
-        this.floors = floors;
+public class Dungeon implements Tickable{
+    public Level[] levels;
+    public Dungeon(Level[] levels){
+        this.levels = levels;
     }
     @TestComponent
     public Dungeon(){
-        this.floors = new Level[]{new Level()};
+        this.levels = new Level[]{new Level()};
+    }
+    @Override
+    public void tick() {
+        for (Level level : this.levels){
+            level.tick();
+        }
     }
 }
