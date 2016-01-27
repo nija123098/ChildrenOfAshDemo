@@ -22,7 +22,7 @@ public class Vec implements Cloneable/*DegreeComparable<Vec>*/{
         this.x = (float) (xMag * Math.cos(Math.toRadians(yAng)));
         this.y = (float) (xMag * Math.sin(Math.toRadians(yAng)));
     }
-    public float mag(){
+    public float mag(){// so, there is an issue with
         return (float) Math.pow(Math.pow(this.x, 2) + Math.pow(this.y, 2), .5);
     }
     public float angle(){

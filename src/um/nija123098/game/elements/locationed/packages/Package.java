@@ -3,6 +3,7 @@ package um.nija123098.game.elements.locationed.packages;
 import um.nija123098.game.elements.living.Living;
 import um.nija123098.game.elements.locationed.DungeonObject;
 import um.nija123098.game.elements.locationed.Location;
+import um.nija123098.resorce.Vec;
 
 import java.util.ArrayList;
 
@@ -10,8 +11,8 @@ import java.util.ArrayList;
  * Created by Student on 1/19/2016.
  */
 public class Package {
-    public Location originLocation;
     public Living origin;
+    public Location originLocation;
     public ArrayList<DungeonObject> affected;
     //public DungeonObject[] affected;
     public Package(Location originLocation, Living origin, ArrayList<DungeonObject> affected){

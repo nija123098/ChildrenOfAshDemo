@@ -8,7 +8,7 @@ import um.nija123098.resorce.Rand;
 /**
  * Made by Dev on 1/18/2016
  */
-public class Placement {// todo make compatable with AdditionalMethodVerificationElement
+public class Placement {
     public int currentPlacement;
     public PositionRig[] positionRigs;
     public Placement(PositionRig[] positionRigs){

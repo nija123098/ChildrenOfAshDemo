@@ -45,7 +45,8 @@ public abstract class Living extends DungeonObject implements Tickable{
     //@Setting
     public static final float PRECISION = .5f;
     public void move(){
-        Vec moveVec = this.getPath();
+        this.tickPathing();
+        Vec moveVec = location.vec.clone();
         for (Float i = moveVec.mag(); i < -PRECISION+.0001f; i = i-PRECISION) {
             ArrayList<DungeonObject> dungeonObjects = new ArrayList<>(4);
             Collections.addAll(dungeonObjects, this.location.objectsAt());
@@ -85,5 +86,5 @@ public abstract class Living extends DungeonObject implements Tickable{
     public boolean isConstruct(){
         return this.construct;
     }
-    public abstract Vec getPath();
+    public abstract void tickPathing();
 }

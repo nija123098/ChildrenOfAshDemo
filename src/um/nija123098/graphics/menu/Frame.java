@@ -12,7 +12,7 @@ import java.awt.*;
 /**
  * Made by Dev on 1/10/2016
  */
-public class Frame extends PlatformFrame {// todo make the enu manipulation better
+public class Frame extends PlatformFrame {// todo make the menu manipulation better
     public static RankingsMenu rankingsMenu = new RankingsMenu();
     public static GameMenu gameMenu = new GameMenu(null);
     public static MainMenu mainMenu = new MainMenu(gameMenu, rankingsMenu);

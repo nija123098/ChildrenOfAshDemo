@@ -13,10 +13,8 @@ import java.util.ArrayList;
  */
 public class ActionMethodContactPackage extends Package {
     public ActionMethod actionMethod;
-    public int attackDirection;
-    public ActionMethodContactPackage(Location originLocation, ActionMethod actionMethod, int attackDirection, Living origin, ArrayList<DungeonObject> affected) {
+    public ActionMethodContactPackage(Location originLocation, ActionMethod actionMethod, Living origin, ArrayList<DungeonObject> affected) {
         super(originLocation, origin, affected);
         this.actionMethod = actionMethod;
-        this.attackDirection = attackDirection;
     }
 }

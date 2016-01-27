@@ -25,7 +25,7 @@ public class PlatformFrame extends JComponent implements KeyListener, MouseListe
         this.setPreferredSize(preferredSize);
         this.jFrame.pack();
         this.jFrame.setDefaultCloseOperation(closeOperation);
-        this.jFrame.setLocationRelativeTo(null);//  todo make a constructor parameter
+        this.jFrame.setLocationRelativeTo(null);
         this.setFocusable(true);
         this.addKeyListener(this);
         this.addMouseListener(this);

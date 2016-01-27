@@ -13,7 +13,7 @@ import java.util.Collections;
 /**
  * Made by Dev on 12/31/2015
  */
-public class ComponentComponent extends Component implements ListensKeyboard, ListensMouse{// todo make this class be based off Platform, todo make xy relative automatically to components
+public class ComponentComponent extends Component implements ListensKeyboard, ListensMouse{
     public ArrayList<Component> subComponents;
     public ComponentComponent(int x, int y, Component...subComponents) {
         super(x, y);

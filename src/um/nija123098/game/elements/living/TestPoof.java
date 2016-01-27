@@ -19,12 +19,12 @@ public class TestPoof extends Living{
         this.body.living = this;
     }
     @Override
-    public Vec getPath() {
+    public void tickPathing() {
         Random random = new Random();
         if (this.flat != 0){
-            return new Vec(random.nextFloat()*2-.5f, random.nextFloat()*2-.5f);
+            this.location.vec = new Vec(random.nextFloat()*2-.5f, random.nextFloat()*2-.5f);
         }else{
-            return new Vec(0, 0);
+            this.location.vec = new Vec(0, 0);
         }
     }
 }

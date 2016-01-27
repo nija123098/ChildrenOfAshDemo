@@ -21,7 +21,7 @@ public class Projectile extends DungeonObject implements Tickable/*, DegreeCompa
         this.tickFactor = tickFactor;
     }
     @Override
-    public void tick(){// todo see if it is necessary to tick dungeonObject
+    public void tick(){
         this.dungeonObject.location.x += vec.x;
         this.dungeonObject.location.y += vec.y;
         this.vec = this.vec.along(this.vec.mag() * this.tickFactor);

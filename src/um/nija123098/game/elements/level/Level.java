@@ -19,7 +19,7 @@ import java.util.ArrayList;
 /**
  * Made by Dev on 12/19/2015
  */
-public class Level extends NamedObject implements Tickable/*,DegreeComparable<Level>*/{
+public class Level extends NamedObject /*implements Tickable ,DegreeComparable<Level>*/{
     public ArrayList<DungeonObject> looseObjects;
     public ArrayList<Living> livings;
     public Floor[][] floor;
@@ -44,6 +44,7 @@ public class Level extends NamedObject implements Tickable/*,DegreeComparable<Le
         this.livings.add(new TestPoof(new Location(this, 5, 5)));
         this.looseObjects.add(new Projectile(new PoofArmor(null), new Vec(1f, 1f), 1f));
     }
+    /*
     @Override
     public void tick() {
         for (DungeonObject dungeonObject : this.looseObjects){
@@ -61,7 +62,7 @@ public class Level extends NamedObject implements Tickable/*,DegreeComparable<Le
                 }
             }
         }
-    }
+    }*/
     public DungeonObject[] objectsAt(Location location){
         return this.objectsAt(location.x, location.y);
     }
@@ -79,6 +80,34 @@ public class Level extends NamedObject implements Tickable/*,DegreeComparable<Le
     }
     public Location getSpawn(){
         return new Location(this, this.floor.length/2, this.floor.length/2);// temp
+    }
+    /*
+     * may want to either merge loose objects
+     * and livings or add an option to disclude
+     * livings in this search
+     */
+    public ArrayList<DungeonObject> getNearObjects(Location location, float distance, boolean floors) {
+        ArrayList<DungeonObject> dungeonObjects = new ArrayList<>();
+        if (floors){
+            for (Floor[] yFloor : this.floor){
+                for (Floor floor : yFloor) {
+                    if (floor.getDistance(location) <= distance){
+                        dungeonObjects.add(floor);
+                    }
+                }
+            }
+        }
+        for (DungeonObject dungeonObject : this.looseObjects) {
+            if (dungeonObject.getDistance(location) <= distance){
+                dungeonObjects.add(dungeonObject);
+            }
+        }
+        for (Living living : this.livings) {
+            if (living.getDistance(location) <= distance){
+                dungeonObjects.add(living);
+            }
+        }
+        return dungeonObjects;
     }
     /*@Override
     public boolean isEqual(Level level) {
