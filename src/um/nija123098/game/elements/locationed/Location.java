@@ -31,6 +31,9 @@ public class Location implements Cloneable/*DegreeComparable<Location>*/{
         this.x += vec.x;
         this.y += vec.y;
     }
+    public void move(){
+        this.move(this.vec);
+    }
     public Floor getFloor(){
         return this.level.getFloor(this);
     }

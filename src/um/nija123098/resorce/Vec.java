@@ -42,6 +42,16 @@ public class Vec implements Cloneable/*DegreeComparable<Vec>*/{
     public Vec along(float length){
         return new Vec(length, (double) this.mag());
     }
+    public Vec allongFactor(float factor){
+        return this.along(this.mag() * factor);
+    }
+    public void change(float factor){
+        this.setThis(this.allongFactor(factor));
+    }
+    public void setThis(Vec vec){
+        this.x = vec.x;
+        this.y = vec.y;
+    }
     /*@Override
     public boolean isEqual(Vec vec) {
         return this.x == vec.x && this.y == vec.y;

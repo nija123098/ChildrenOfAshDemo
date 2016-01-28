@@ -38,7 +38,6 @@ public class Stats {
     public int getIntelligence() {
         return this.intelligence[this.level > this.toughness.length-1 ? this.toughness.length-1 : this.level];
     }
-    //*
     public int getLife(){
         return (int) (this.getStrength() * .7 + this.getToughness() * .2 + this.getAgility() * .1);
     }
@@ -53,5 +52,5 @@ public class Stats {
     }
     public int getResistance(){
         return (int) (this.getConstitution() * .8 + this.getToughness() * .2);
-    }//*/
+    }
 }

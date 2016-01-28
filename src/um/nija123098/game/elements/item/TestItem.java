@@ -3,8 +3,7 @@ package um.nija123098.game.elements.item;
 import um.nija123098.game.elements.locationed.Location;
 import um.nija123098.game.elements.locationed.packages.subs.ActionMethodContactPackage;
 import um.nija123098.game.elements.locationed.packages.subs.StompPackage;
-import um.nija123098.game.elements.locationed.packages.subs.ThrowObjectPackage;
-import um.nija123098.game.elements.locationed.packages.subs.WalkContactPackage;
+import um.nija123098.game.elements.locationed.packages.subs.ItemContactPackage;
 import um.nija123098.test.TestComponent;
 
 /**
@@ -21,11 +20,7 @@ public class TestItem extends Item{
         this.life -= 2;
     }
     @Override
-    public void thrownContact(ThrowObjectPackage throwObjectPackage) {
-        this.life += 2;
-    }
-    @Override
-    public boolean walkedContact(WalkContactPackage walkContactPackage) {
+    public boolean itemContacted(ItemContactPackage itemContactPackage) {
         return this.life > 5;
     }
     @Override

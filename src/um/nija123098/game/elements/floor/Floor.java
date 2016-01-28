@@ -2,8 +2,7 @@ package um.nija123098.game.elements.floor;
 
 import um.nija123098.game.elements.locationed.DungeonObject;
 import um.nija123098.game.elements.locationed.Location;
-import um.nija123098.game.elements.locationed.packages.subs.ThrowObjectPackage;
-import um.nija123098.game.elements.locationed.packages.subs.WalkContactPackage;
+import um.nija123098.game.elements.locationed.packages.subs.ItemContactPackage;
 
 /**
  * Made by Dev on 12/19/2015
@@ -15,10 +14,10 @@ public abstract class Floor extends DungeonObject{
         this.location = location;
     }
     @Override
-    public void thrownContact(ThrowObjectPackage throwObjectPackage) {
+    public boolean itemContacted(ItemContactPackage itemContactPackage) {
+        return true;
     }
     @Override
-    public boolean walkedContact(WalkContactPackage walkContactPackage) {
-        return true;
+    public void tick(){
     }
 }
