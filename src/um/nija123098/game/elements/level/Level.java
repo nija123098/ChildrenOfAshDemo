@@ -60,17 +60,14 @@ public class Level extends NamedObject /*implements Tickable, DegreeComparable<L
             }
         }
     }*/
-    public DungeonObject[] objectsAt(Location location){
-        return this.objectsAt(location.x, location.y);
-    }
-    public DungeonObject[] objectsAt(float x, float y){
+    public ArrayList<DungeonObject> objectsAt(Location location){
         ArrayList<DungeonObject> objectsAt = new ArrayList<DungeonObject>(2);
         for (DungeonObject dungeonObject : this.objects){
-            if (dungeonObject.getDistance(new Location(this, x, y)) <= dungeonObject.size){
+            if (dungeonObject.location.withinDistance(location, dungeonObject.size)){
                 objectsAt.add(dungeonObject);
             }
         }
-        return objectsAt.toArray(new DungeonObject[objectsAt.size()]);
+        return objectsAt;
     }
     public Floor getFloor(Location location){
         return this.floor[((int) location.x)][((int) location.y)];

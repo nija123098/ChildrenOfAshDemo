@@ -61,12 +61,10 @@ public abstract class Living extends DungeonObject implements Tickable{
             }
         }
     }*/
-    /* requires re-write
-    public void throwObject(DungeonObject dungeonObject, Vec vec){
-        this.location.level.looseObjects.add(new Projectile(dungeonObject, vec, 2f));
-    }*/
     public boolean itemContact(ItemContactPackage itemContactPackage){// when this walks into that, that package requires info on if itemContacted return
-        if (itemContactPackage.getTargetLocation().getFloor()==null){
+        Location l = itemContactPackage.originLocation.clone();
+        l.vec.add(l.vec.along(PRECISION));
+        if (l.getFloor()==null){
             return false;
         }
         boolean result = true;
@@ -81,9 +79,8 @@ public abstract class Living extends DungeonObject implements Tickable{
         actionMethodContactPackage.actionMethod.activate(actionMethodContactPackage);
     }
     public void stomp(){//public abstract void stomp();// um
-        ArrayList<DungeonObject> dungeonObjects = new ArrayList<DungeonObject>();
+        ArrayList<DungeonObject> dungeonObjects = this.location.objectsAt();
         dungeonObjects.add(this.location.getFloor());
-        Collections.addAll(dungeonObjects, this.location.level.objectsAt(this.location.x, this.location.y));
         for (DungeonObject dungeonObject : dungeonObjects){
             dungeonObject.stompedOn(new StompPackage(this.location, this, dungeonObjects));
         }

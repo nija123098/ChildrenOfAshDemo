@@ -8,9 +8,7 @@ import um.nija123098.resorce.Vec;
  * Made by Dev on 1/23/2016
  */
 public class ActionMethodActivationPackage extends Package{
-    public int attackDirection;
     public ActionMethodActivationPackage(ActionMethodContactPackage actionMethodContactPackage){
         super(actionMethodContactPackage);
-        this.attackDirection = actionMethodContactPackage.attackDirection;
     }
 }

@@ -1,6 +1,5 @@
 package um.nija123098.game.elements.locationed;
 
-import um.nija123098.game.Config;
 import um.nija123098.game.elements.floor.Floor;
 import um.nija123098.game.elements.level.Level;
 import um.nija123098.resorce.Vec;
@@ -21,10 +20,13 @@ public class Location implements Cloneable/*DegreeComparable<Location>*/{
         this.x = x;
         this.y = y;
     }
-    public boolean pickupDistanceAcceptable(Location location){
-        return this.level.equals(location.level) && Math.pow(Math.pow(this.x + location.x, 2) + Math.pow(this.y + location.y, 2), .5) <= Config.gOIADT();
+    public boolean withinDistance(Location location, float distance){
+        return this.getDistance(location) < distance;
     }
-    public DungeonObject[] objectsAt(){
+    public float getDistance(Location location){
+        return (float) Math.pow(Math.pow(location.x - this.x, 2) + Math.pow(location.y - this.y, 2), .5);
+    }
+    public ArrayList<DungeonObject> objectsAt(){
         return this.level.objectsAt(this);
     }
     public void move(Vec vec){

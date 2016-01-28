@@ -13,9 +13,4 @@ public class ItemContactPackage extends Package{
     public ItemContactPackage(Location originLocation, DungeonObject origin, ArrayList<DungeonObject> affected) {
         super(originLocation, origin, affected);
     }
-    public Location getTargetLocation(){
-        Location location = this.originLocation.clone();
-        location.move(this.originLocation.vec);
-        return location;
-    }
 }

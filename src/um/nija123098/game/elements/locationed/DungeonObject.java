@@ -6,7 +6,6 @@ import um.nija123098.game.elements.actionmethod.ActionMethodActivationPackage;
 import um.nija123098.game.elements.locationed.packages.subs.ActionMethodContactPackage;
 import um.nija123098.game.elements.locationed.packages.subs.ItemContactPackage;
 import um.nija123098.game.elements.locationed.packages.subs.StompPackage;
-import um.nija123098.resorce.Rand;
 import um.nija123098.resorce.Vec;
 
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 public abstract class DungeonObject extends NamedObject implements Tickable/*DegreeComparable<DungeonObject>*/{
     public float slideFactor = .9f;// todo get slide factor based on objects around it, could return 0f instead of bool to indicate stop, would require this variable still though
     public float size = 1;// diameter? radius? possibly to shape?
-    public Vec vec = new Vec(-1, Rand.getRand(359));
     public Location location;
     public DungeonObject(String name, Location location){
         super(name);
