@@ -15,6 +15,7 @@ public class Battery extends ModularBase implements Tickable{
     }
     @Override
     public void tick() {
+        super.tick();
         this.addStateAround(State.ELECTRIFIED);
     }
 }

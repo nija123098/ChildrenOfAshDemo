@@ -2,10 +2,7 @@ package um.nija123098.game.elements.locationed;
 
 import um.nija123098.game.elements.NamedObject;
 import um.nija123098.game.elements.Tickable;
-import um.nija123098.game.elements.actionmethod.ActionMethodActivationPackage;
-import um.nija123098.game.elements.locationed.packages.subs.ActionMethodContactPackage;
-import um.nija123098.game.elements.locationed.packages.subs.ItemContactPackage;
-import um.nija123098.game.elements.locationed.packages.subs.StompPackage;
+import um.nija123098.game.elements.actionmethod.ActionMethod;
 import um.nija123098.resorce.Vec;
 
 import java.util.ArrayList;
@@ -13,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Made by Dev on 12/19/2015
  */
-public abstract class DungeonObject extends NamedObject implements Tickable/*DegreeComparable<DungeonObject>*/{
+public abstract class DungeonObject extends NamedObject implements Tickable/*DegreeComparable<DungeonObject>*/{// todo re apply override methods to various objects
     public float slideFactor = .9f;// todo get slide factor based on objects around it, could return 0f instead of bool to indicate stop, would require this variable still though
     public float size = 1;// diameter? radius? possibly to shape?
     public Location location;
@@ -21,14 +18,32 @@ public abstract class DungeonObject extends NamedObject implements Tickable/*Deg
         super(name);
         this.location = location;
     }
-    public void stompedOn(StompPackage stompPackage){// um
+    public boolean objectContact(DungeonObject origin){// when this walks into that, that package requires info on if objectContacted return
+        Location l = origin.location.clone();
+        l.vec.add(l.vec.along(PRECISION));
+        if (l.getFloor()==null){
+            return false;
+        }
+        ArrayList<DungeonObject> affected = l.objectsAt();
+        affected.add(l.getFloor());
+        boolean result = true;
+        for (DungeonObject dungeonObject : affected){
+            if (!dungeonObject.objectContacted(origin, affected)){
+                result = false;
+            }
+        }
+        return result;
     }
-    public boolean itemContacted(ItemContactPackage itemContactPackage){// when this is walked into
+    public boolean objectContacted(DungeonObject origin, ArrayList<DungeonObject> affected){// when this is walked into
         return true;
     }
-    public void methodContacted(ActionMethodContactPackage actionMethodContactPackage){// when this is attacked by that
-        actionMethodContactPackage.actionMethod.effect(new ActionMethodActivationPackage(actionMethodContactPackage));
+    public void methodContact(DungeonObject origin, DungeonObject sorce, ActionMethod actionMethod){// when this attacks that
+        actionMethod.activate(origin, sorce);
     }
+    /* temporarily disabled due to possible rewrite, for immunity to certain AMs
+    public void methodContacted(DungeonObject origin, DungeonObject source, ArrayList<DungeonObject> affected, ActionMethod actionMethod){// when this is attacked by that
+        actionMethod.effect(origin, affected);
+    }*/
     //@Setting
     public static final float PRECISION = .5f;
     /**
@@ -37,12 +52,12 @@ public abstract class DungeonObject extends NamedObject implements Tickable/*Deg
      * processing collision is acceptable.
      */
     @Override
-    public void tick(){
+    public void tick(){// todo apply this.objectContact(), likely requires rewrite of that method
         ArrayList<DungeonObject> dungeonObjects = this.location.getNearObjects(this.location, this.size, false);
         boolean stoped = false;
         for (float i = this.location.vec.mag(); i < -PRECISION+.0001f; i = i-PRECISION) {
             for (DungeonObject dungeonObject : dungeonObjects){
-                if (!dungeonObject.itemContacted(new ItemContactPackage(this.location, this, this.location.getNearObjects(new Location(this.location.level, (this.location.x + dungeonObject.location.x)/2, (this.location.y + dungeonObject.location.y)/2), this.size, false)))){
+                if (!dungeonObject.objectContacted(this, dungeonObjects)){
                     stoped = true;
                 }
             }

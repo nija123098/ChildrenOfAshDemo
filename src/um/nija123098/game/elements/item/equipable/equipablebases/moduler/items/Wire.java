@@ -22,6 +22,7 @@ public class Wire extends ModularBase implements Tickable{
     }
     @Override
     public void tick() {
+        super.tick();
         if (this.hasState(State.ELECTRIFIED) && this.heat < 100){
             ++this.heat;
         }else if (this.heat > 0){

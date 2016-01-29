@@ -1,5 +1,6 @@
 package um.nija123098.game.elements.locationed.packages;
 
+import um.nija123098.game.elements.actionmethod.ActionMethod;
 import um.nija123098.game.elements.living.Living;
 import um.nija123098.game.elements.locationed.DungeonObject;
 import um.nija123098.game.elements.locationed.Location;
@@ -9,10 +10,11 @@ import java.util.ArrayList;
 /**
  * Created by Student on 1/19/2016.
  */
-public class Package {
+public class Package {// pending complete removal
     public DungeonObject origin;
     public Location originLocation;
     public ArrayList<DungeonObject> affected;
+    public ActionMethod actionMethod;
     //public DungeonObject[] affected;
     public Package(Location originLocation, DungeonObject origin, ArrayList<DungeonObject> affected){
         this.originLocation = originLocation;

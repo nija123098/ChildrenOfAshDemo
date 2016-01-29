@@ -11,6 +11,6 @@ public class InsilatedWire extends Wire{
         super(location, nearBases);
     }
     @Override// this serves to not heat the wire, DO NOT REMOVE
-    public void tick(){
+    public void tick(){// todo, to fix this regular super.tick must be removed and changed to commonTick
     }
 }
