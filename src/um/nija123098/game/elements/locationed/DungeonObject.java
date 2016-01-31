@@ -3,6 +3,7 @@ package um.nija123098.game.elements.locationed;
 import um.nija123098.game.elements.NamedObject;
 import um.nija123098.game.elements.Tickable;
 import um.nija123098.game.elements.actionmethod.ActionMethod;
+import um.nija123098.game.elements.item.Item;
 import um.nija123098.resorce.Vec;
 
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
  * Made by Dev on 12/19/2015
  */
 public abstract class DungeonObject extends NamedObject implements Tickable/*DegreeComparable<DungeonObject>*/{// todo re apply override methods to various objects
+    public float hardness = 1;
+    public float temp;
     public float slideFactor = .9f;// todo get slide factor based on objects around it, could return 0f instead of bool to indicate stop, would require this variable still though
     public float size = 1;// diameter? radius? possibly to shape?
     public Location location;
@@ -18,7 +21,7 @@ public abstract class DungeonObject extends NamedObject implements Tickable/*Deg
         super(name);
         this.location = location;
     }
-    public boolean objectContact(DungeonObject origin){// when this walks into that, that package requires info on if objectContacted return
+    public boolean objectContact(DungeonObject origin){
         Location l = origin.location.clone();
         l.vec.add(l.vec.along(PRECISION));
         if (l.getFloor()==null){
@@ -34,16 +37,15 @@ public abstract class DungeonObject extends NamedObject implements Tickable/*Deg
         }
         return result;
     }
-    public boolean objectContacted(DungeonObject origin, ArrayList<DungeonObject> affected){// when this is walked into
-        return true;
+    public boolean objectContacted(DungeonObject origin, ArrayList<DungeonObject> affected){
+        return origin instanceof Item;
     }
-    public void methodContact(DungeonObject origin, DungeonObject sorce, ActionMethod actionMethod){// when this attacks that
-        actionMethod.activate(origin, sorce);
+    public void methodContact(ActionMethod actionMethod){// when this attacks that
+        actionMethod.activate();
     }
-    /* temporarily disabled due to possible rewrite, for immunity to certain AMs
-    public void methodContacted(DungeonObject origin, DungeonObject source, ArrayList<DungeonObject> affected, ActionMethod actionMethod){// when this is attacked by that
-        actionMethod.effect(origin, affected);
-    }*/
+    // for immunity to certain AMs
+    public void methodContacted(ActionMethod actionMethod){// when this is attacked by that
+    }
     //@Setting
     public static final float PRECISION = .5f;
     /**
@@ -75,5 +77,8 @@ public abstract class DungeonObject extends NamedObject implements Tickable/*Deg
         this.location.level.objects.add(this);
         this.location = this.location.clone();
         this.location.vec.add(vec);
+    }
+    public ArrayList<ActionMethod> getActionMethods(boolean selected){
+        return null;// todo
     }
 }

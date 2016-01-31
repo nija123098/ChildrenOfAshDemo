@@ -1,6 +1,6 @@
-package um.nija123098.game.elements.living.damage.damagetypes;
+package um.nija123098.game.elements.damage.damagetypes;
 
-import um.nija123098.game.elements.living.damage.DamageSystem;
+import um.nija123098.game.elements.damage.DamageSystem;
 
 /**
  * Made by Dev on 1/21/2016
@@ -13,5 +13,8 @@ public class Damage {
     }
     public int getRealDamage(){
         return this.damage;
+    }
+    public boolean isValid(){
+        return true;
     }
 }

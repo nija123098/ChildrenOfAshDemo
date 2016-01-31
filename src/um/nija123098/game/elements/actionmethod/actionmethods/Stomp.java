@@ -9,18 +9,19 @@ import java.util.ArrayList;
  * Made by Dev on 1/28/2016
  */
 public class Stomp extends ActionMethod{
-    public Stomp() {
-        super("Stomp");
+    public Stomp(DungeonObject origin) {
+        super("Stomp", origin);
     }
     @Override
-    public ArrayList<DungeonObject> getAffected(DungeonObject origin, DungeonObject source) {
+    public void activate() {
         ArrayList<DungeonObject> dungeonObjects = origin.location.objectsAt();
         dungeonObjects.add(origin.location.getFloor());
         dungeonObjects.addAll(origin.location.objectsAt());
-        return dungeonObjects;
+        for (DungeonObject dungeonObject : dungeonObjects){
+            this.effect(dungeonObject);
+        }
     }
     @Override
-    public void effect(DungeonObject effect, DungeonObject origin, DungeonObject source, ArrayList<DungeonObject> affected) {
-        // todo
+    public void effect(DungeonObject dungeonObject) {
     }
 }

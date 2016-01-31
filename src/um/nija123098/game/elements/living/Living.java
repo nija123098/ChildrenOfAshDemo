@@ -2,7 +2,7 @@ package um.nija123098.game.elements.living;
 
 import um.nija123098.game.elements.Tickable;
 import um.nija123098.game.elements.living.body.Body;
-import um.nija123098.game.elements.living.damage.DamageSystem;
+import um.nija123098.game.elements.damage.DamageSystem;
 import um.nija123098.game.elements.living.inventory.Inventory;
 import um.nija123098.game.elements.locationed.DungeonObject;
 import um.nija123098.game.elements.locationed.Location;

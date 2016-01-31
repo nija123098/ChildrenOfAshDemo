@@ -1,8 +1,8 @@
-package um.nija123098.game.elements.item.equipable.equipablebases.moduler.items;
+package um.nija123098.game.elements.item.special.moduler.items;
 
 import um.nija123098.game.elements.Tickable;
-import um.nija123098.game.elements.item.equipable.equipablebases.moduler.ModularBase;
-import um.nija123098.game.elements.item.equipable.equipablebases.moduler.State;
+import um.nija123098.game.elements.item.special.moduler.ModularBase;
+import um.nija123098.game.elements.item.special.State;
 import um.nija123098.game.elements.locationed.Location;
 
 /**

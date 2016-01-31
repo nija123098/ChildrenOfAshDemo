@@ -41,25 +41,6 @@ public class Level extends NamedObject /*implements Tickable, DegreeComparable<L
         poofArmor.throwObject(new Vec(1f, 1f));
         this.objects.add(poofArmor);
     }
-    /*
-    @Override
-    public void tick() {
-        for (DungeonObject dungeonObject : this.looseObjects){
-            if (dungeonObject instanceof Tickable){
-                ((Tickable) dungeonObject).tick();
-            }
-        }
-        for (Living living : this.livings){
-            living.tick();
-        }
-        for (Floor[] floorX : this.floor){
-            for (Floor floor : floorX){
-                if (floor instanceof Tickable){
-                    ((Tickable) floor).tick();
-                }
-            }
-        }
-    }*/
     public ArrayList<DungeonObject> objectsAt(Location location){
         ArrayList<DungeonObject> objectsAt = new ArrayList<DungeonObject>(2);
         for (DungeonObject dungeonObject : this.objects){

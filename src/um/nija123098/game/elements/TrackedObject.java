@@ -10,7 +10,7 @@ public class TrackedObject {
         trackedObjects.add(this);
     }
     private static ArrayList<TrackedObject> trackedObjects = new ArrayList<TrackedObject>(50);
-    public static void tickAll(){
+    public static void tickAll(){//may not tick in a desired pattern
         trackedObjects.stream().filter(trackedObject -> trackedObject instanceof Tickable).forEach(trackedObject -> ((Tickable) trackedObject).tick());
     }
 }

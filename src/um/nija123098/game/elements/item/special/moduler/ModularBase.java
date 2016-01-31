@@ -1,5 +1,6 @@
-package um.nija123098.game.elements.item.equipable.equipablebases.moduler;
+package um.nija123098.game.elements.item.special.moduler;
 
+import um.nija123098.game.elements.item.special.State;
 import um.nija123098.game.elements.locationed.DungeonObject;
 import um.nija123098.game.elements.locationed.Location;
 

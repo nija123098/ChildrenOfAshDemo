@@ -52,6 +52,12 @@ public class Vec implements Cloneable/*DegreeComparable<Vec>*/{
         this.x = vec.x;
         this.y = vec.y;
     }
+    public float x(){
+        return this.x;
+    }
+    public float y(){
+        return this.y;
+    }
     /*@Override
     public boolean isEqual(Vec vec) {
         return this.x == vec.x && this.y == vec.y;

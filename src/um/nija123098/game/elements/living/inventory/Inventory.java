@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Made by Dev on 12/22/2015
  */
-public class Inventory {
+public class Inventory extends Container{
     public Container container;
     public Living living;
     public ArrayList<Integer> equippedIndex;
@@ -25,29 +25,6 @@ public class Inventory {
             this.addItem(item);
         }
     }
-    public boolean roomInInventory(){
-        return this.container.hasRoom();
-    }
-    public boolean addItem(Item item){
-        if (this.roomInInventory()){
-            return false;
-        }
-        this.container.items.add(item);
-        return true;
-    }
-    public Item removeItem(Item item){
-        Item fItem = null;
-        for (Item qItem : this.container.items){
-            if (qItem.is(item)){
-                fItem = qItem;
-                break;
-            }
-        }
-        if (fItem != null){
-            this.container.items.remove(fItem);
-        }
-        return fItem;
-    }
     public boolean equip(Item item){
         return item instanceof Equipable && ((Equipable) item).canEquip(this.living) && (!(this instanceof AdditionalMethodVerificationElement) || ((AdditionalMethodVerificationElement) item).additionalVerification(this.living)) && this.living.body.canEquip(((Equipable) item));
     }
@@ -56,28 +33,4 @@ public class Inventory {
             this.equippedIndex.remove(this.container.items.indexOf(item));
         }
     }
-    /*public Item removeItem(Item item, CompareType compareType){
-        Item fItem = null;
-        for (Item qItem : this.items){
-            boolean qualifies = false;
-            switch (compareType){
-                case IS:
-                    qualifies = qItem.is(item);
-                    break;
-                case IS_TYPE:
-                    qualifies = qItem.isType(item);
-                    break;
-                case IS_EQUAL:
-                    qualifies = qItem.isEqual(item);
-            }
-            if (qualifies){
-                fItem = qItem;
-                break;
-            }
-        }
-        if (fItem != null){
-            this.items.remove(fItem);
-        }
-        return fItem;
-    }*/
 }
