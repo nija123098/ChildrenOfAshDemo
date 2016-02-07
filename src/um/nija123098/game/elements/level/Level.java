@@ -61,7 +61,7 @@ public class Level extends NamedObject /*implements Tickable, DegreeComparable<L
      * and livings or add an option to disclude
      * livings in this search
      */
-    public ArrayList<DungeonObject> getNearObjects(Location location, float distance, boolean floors) {
+    public ArrayList<DungeonObject> getNearObjects(Location location, double distance, boolean floors) {
         ArrayList<DungeonObject> dungeonObjects = new ArrayList<>();
         if (floors){
             for (Floor[] yFloor : this.floor){

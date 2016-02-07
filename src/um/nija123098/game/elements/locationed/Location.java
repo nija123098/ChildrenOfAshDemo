@@ -1,5 +1,6 @@
 package um.nija123098.game.elements.locationed;
 
+import basicjavautillibrary.um.nija123098.math.geometry.Point;
 import um.nija123098.game.elements.floor.Floor;
 import um.nija123098.game.elements.level.Level;
 import um.nija123098.resorce.Vec;
@@ -14,11 +15,14 @@ public class Location implements Cloneable/*DegreeComparable<Location>*/{
     public float direction = new Random().nextFloat() % 360;
     public Vec vec = new Vec(0f, 0f);
     public Level level;
-    public float x, y;
-    public Location(Level level, float x, float y){
+    public double x, y;
+    public Location(Level level, double x, double y){
         this.level = level;
         this.x = x;
         this.y = y;
+    }
+    public Location(Level level, Point point){
+        this(level, point.getX(), point.getY());
     }
     public boolean withinDistance(Location location, float distance){
         return this.getDistance(location) < distance;
@@ -53,8 +57,21 @@ public class Location implements Cloneable/*DegreeComparable<Location>*/{
         }
         return d;
     }
-    public ArrayList<DungeonObject> getNearObjects(Location location, float distance, boolean floors){
-        return this.level.getNearObjects(location ,distance, floors);
+    public ArrayList<DungeonObject> getNearObjects(double distance, boolean floors){
+        return this.level.getNearObjects(this, distance, floors);
+    }
+    public DungeonObject getNearest(double precision, double limit, boolean floors){
+        double l = limit;
+        for (double i = 0; i < (l += (limit < 0 ? precision : 0)); i += precision) {
+            ArrayList<DungeonObject> dos = this.getNearObjects(i, floors);
+            if (dos.size() > 1){
+                return dos.get(1);
+            }
+        }
+        return null;
+    }
+    public DungeonObject getNearest(double precision, double limit){
+        return this.getNearest(precision, limit, false);
     }
     /*@Override
     public boolean isEqual(Location location) {

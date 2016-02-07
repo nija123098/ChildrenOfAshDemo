@@ -1,9 +1,11 @@
 package um.nija123098.game.elements.locationed;
 
+import basicjavautillibrary.um.nija123098.math.geometry.Point;
 import um.nija123098.game.elements.NamedObject;
 import um.nija123098.game.elements.Tickable;
 import um.nija123098.game.elements.actionmethod.ActionMethod;
 import um.nija123098.game.elements.item.Item;
+import um.nija123098.game.elements.structure.Structure;
 import um.nija123098.resorce.Vec;
 
 import java.util.ArrayList;
@@ -11,15 +13,17 @@ import java.util.ArrayList;
 /**
  * Made by Dev on 12/19/2015
  */
-public abstract class DungeonObject extends NamedObject implements Tickable/*DegreeComparable<DungeonObject>*/{// todo re apply override methods to various objects
-    public float hardness = 1;
-    public float temp;
+public abstract class DungeonObject extends NamedObject implements Tickable/*, DegreeComparable<DungeonObject>*/{// todo re apply override methods to various objects
     public float slideFactor = .9f;// todo get slide factor based on objects around it, could return 0f instead of bool to indicate stop, would require this variable still though
     public float size = 1;// diameter? radius? possibly to shape?
+    public Point focused = new Point(0d, 0d);
     public Location location;
-    public DungeonObject(String name, Location location){
+    public Structure structure;
+    public DungeonObject(String name, Location location, Structure structure){
         super(name);
         this.location = location;
+        this.structure = structure;
+        this.structure.object = this;
     }
     public boolean objectContact(DungeonObject origin){
         Location l = origin.location.clone();
@@ -44,7 +48,7 @@ public abstract class DungeonObject extends NamedObject implements Tickable/*Deg
         actionMethod.activate();
     }
     // for immunity to certain AMs
-    public void methodContacted(ActionMethod actionMethod){// when this is attacked by that
+    public void methodContacted(ActionMethod actionMethod){
     }
     //@Setting
     public static final float PRECISION = .5f;
@@ -55,7 +59,7 @@ public abstract class DungeonObject extends NamedObject implements Tickable/*Deg
      */
     @Override
     public void tick(){// todo apply this.objectContact(), likely requires rewrite of that method
-        ArrayList<DungeonObject> dungeonObjects = this.location.getNearObjects(this.location, this.size, false);
+        ArrayList<DungeonObject> dungeonObjects = this.location.getNearObjects(this.size, false);
         boolean stoped = false;
         for (float i = this.location.vec.mag(); i < -PRECISION+.0001f; i = i-PRECISION) {
             for (DungeonObject dungeonObject : dungeonObjects){
@@ -80,5 +84,11 @@ public abstract class DungeonObject extends NamedObject implements Tickable/*Deg
     }
     public ArrayList<ActionMethod> getActionMethods(boolean selected){
         return null;// todo
+    }
+    public boolean colides(DungeonObject dungeonObject){
+        return this.structure.shape.union(dungeonObject.structure.shape).hasContent();
+    }
+    public DungeonObject getFocused(double precision, double limit){
+        return new Location(this.location.level, this.focused).getNearest(precision, limit);
     }
 }

@@ -1,8 +1,8 @@
-package um.nija123098.graphics.menu.game;
+package um.nija123098.graphics.game;
 
-import um.nija123098.graphics.menu.SuperComponentComponent;
-import um.nija123098.graphics.menu.game.bar.Bar;
-import um.nija123098.graphics.menu.game.field.Field;
+import um.nija123098.graphics.SuperComponentComponent;
+import um.nija123098.graphics.game.bar.Bar;
+import um.nija123098.graphics.game.field.Field;
 
 /**
  * Created by Student on 1/28/2016.

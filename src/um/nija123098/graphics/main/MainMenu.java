@@ -1,6 +1,6 @@
-package um.nija123098.graphics.menu.main;
+package um.nija123098.graphics.main;
 
-import um.nija123098.graphics.menu.SuperComponentComponent;
+import um.nija123098.graphics.SuperComponentComponent;
 
 /**
  * Created by Student on 1/28/2016.

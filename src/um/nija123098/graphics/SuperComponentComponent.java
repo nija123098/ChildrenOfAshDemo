@@ -1,12 +1,12 @@
-package um.nija123098.graphics.menu;
+package um.nija123098.graphics;
 
-import um.nija123098.graphics.hypotheticalgraphicslib.componaent.Component;
-import um.nija123098.graphics.hypotheticalgraphicslib.componaent.ComponentComponent;
+import basicjavautillibrary.um.nija123098.graphics.componaent.Component;
+import basicjavautillibrary.um.nija123098.graphics.componaent.ComponentComponent;
 
 /**
  * Created by Student on 1/28/2016.
  */
-public class SuperComponentComponent extends ComponentComponent{
+public class SuperComponentComponent extends ComponentComponent {
     public SuperComponentComponent(int x, int y, Component... subComponents) {
         super(x, y, subComponents);
     }

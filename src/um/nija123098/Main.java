@@ -1,7 +1,7 @@
 package um.nija123098;
 
-import um.nija123098.graphics.hypotheticalgraphicslib.PlatformFrame;
-import um.nija123098.graphics.menu.Frame;
+import basicjavautillibrary.um.nija123098.graphics.PlatformFrame;
+import um.nija123098.graphics.Frame;
 
 public class Main {
     public static void main(String[] args) {

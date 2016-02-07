@@ -25,7 +25,7 @@ public class DamageSystem implements Tickable {// should make healing easy, may 
         return damage;
     }
     public boolean isAlive(){
-        return this.stats.getLife() > this.getRealDamage();
+        return this.stats.getLife() >= this.getRealDamage();
     }
     public void add(Damage damage){
         this.damage.add(damage);
