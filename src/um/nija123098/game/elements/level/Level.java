@@ -44,7 +44,7 @@ public class Level extends NamedObject /*implements Tickable, DegreeComparable<L
     public ArrayList<DungeonObject> objectsAt(Location location){
         ArrayList<DungeonObject> objectsAt = new ArrayList<DungeonObject>(2);
         for (DungeonObject dungeonObject : this.objects){
-            if (dungeonObject.location.withinDistance(location, dungeonObject.size)){
+            if (dungeonObject.location.withinDistance(location, dungeonObject.structure.getSize())){
                 objectsAt.add(dungeonObject);
             }
         }

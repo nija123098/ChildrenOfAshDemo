@@ -11,6 +11,7 @@ public class GameMain {
     public static void loop(Game game){
         while (run){
             // yay, requires that only one game be loaded at a time
+            TrackedObject.commonTickAll();
             TrackedObject.tickAll();
         }
     }

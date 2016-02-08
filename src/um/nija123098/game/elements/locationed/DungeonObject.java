@@ -15,7 +15,6 @@ import java.util.ArrayList;
  */
 public abstract class DungeonObject extends NamedObject implements Tickable/*, DegreeComparable<DungeonObject>*/{// todo re apply override methods to various objects
     public float slideFactor = .9f;// todo get slide factor based on objects around it, could return 0f instead of bool to indicate stop, would require this variable still though
-    public float size = 1;// diameter? radius? possibly to shape?
     public Point focused = new Point(0d, 0d);
     public Location location;
     public Structure structure;
@@ -27,7 +26,7 @@ public abstract class DungeonObject extends NamedObject implements Tickable/*, D
     }
     public boolean objectContact(DungeonObject origin){
         Location l = origin.location.clone();
-        l.vec.add(l.vec.along(PRECISION));
+        l.vec.add(l.vec.along(PRECISION));// there is probably something wrong with this
         if (l.getFloor()==null){
             return false;
         }
@@ -47,9 +46,8 @@ public abstract class DungeonObject extends NamedObject implements Tickable/*, D
     public void methodContact(ActionMethod actionMethod){// when this attacks that
         actionMethod.activate();
     }
-    // for immunity to certain AMs
     public void methodContacted(ActionMethod actionMethod){
-    }
+    }// for immunity to certain AMs
     //@Setting
     public static final float PRECISION = .5f;
     /**
@@ -57,9 +55,8 @@ public abstract class DungeonObject extends NamedObject implements Tickable/*, D
      * There is no other location where
      * processing collision is acceptable.
      */
-    @Override
-    public void tick(){// todo apply this.objectContact(), likely requires rewrite of that method
-        ArrayList<DungeonObject> dungeonObjects = this.location.getNearObjects(this.size, false);
+    public void commonTick(){// todo apply this.objectContact(), likely requires rewrite of that method
+        ArrayList<DungeonObject> dungeonObjects = this.location.getNearObjects(this.structure.getSize(), false);
         boolean stoped = false;
         for (float i = this.location.vec.mag(); i < -PRECISION+.0001f; i = i-PRECISION) {
             for (DungeonObject dungeonObject : dungeonObjects){
@@ -82,7 +79,7 @@ public abstract class DungeonObject extends NamedObject implements Tickable/*, D
         this.location = this.location.clone();
         this.location.vec.add(vec);
     }
-    public ArrayList<ActionMethod> getActionMethods(boolean selected){
+    public ArrayList<ActionMethod> getActionMethods(boolean selected){// may want interface for this
         return null;// todo
     }
     public boolean colides(DungeonObject dungeonObject){

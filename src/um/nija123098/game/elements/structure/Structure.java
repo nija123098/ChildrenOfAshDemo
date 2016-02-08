@@ -1,5 +1,6 @@
 package um.nija123098.game.elements.structure;
 
+import basicjavautillibrary.um.nija123098.math.UtilMath;
 import basicjavautillibrary.um.nija123098.math.geometry.Shape;
 import um.nija123098.game.elements.Setting;
 import um.nija123098.game.elements.Tickable;
@@ -36,5 +37,8 @@ public class Structure implements Tickable{
     }
     public void addTemp(double heat){
         this.temp += heat;
+    }
+    public double getSize(){// should optimize
+        return UtilMath.distance(0, 0, this.shape.getLength()/2, this.shape.getWidth());
     }
 }

@@ -24,7 +24,7 @@ public class Location implements Cloneable/*DegreeComparable<Location>*/{
     public Location(Level level, Point point){
         this(level, point.getX(), point.getY());
     }
-    public boolean withinDistance(Location location, float distance){
+    public boolean withinDistance(Location location, double distance){
         return this.getDistance(location) < distance;
     }
     public float getDistance(Location location){

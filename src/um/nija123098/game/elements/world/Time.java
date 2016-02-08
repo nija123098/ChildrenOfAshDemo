@@ -16,5 +16,5 @@ public class Time extends OverflowingDouble implements Tickable{
     }
     public double lightLevel(){
         return this.getValue();
-    }// it works like this
+    }// it works like this in real life
 }

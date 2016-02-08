@@ -3,7 +3,7 @@ package um.nija123098.resorce;
 /**
  * Made by Dev on 12/19/2015
  */
-public class Vec implements Cloneable/*DegreeComparable<Vec>*/{
+public class Vec implements Cloneable/*DegreeComparable<Vec>*/{// todo get rid of this vec and replace with the lib vec
     public float x, y;
     public Vec(float x, float y){
         this.x = x;
@@ -42,11 +42,11 @@ public class Vec implements Cloneable/*DegreeComparable<Vec>*/{
     public Vec along(float length){
         return new Vec(length, (double) this.angle());
     }
-    public Vec allongFactor(float factor){
+    public Vec alongFactor(float factor){
         return this.along(this.mag() * factor);
     }
     public void change(float factor){
-        this.setThis(this.allongFactor(factor));
+        this.setThis(this.alongFactor(factor));
     }
     private void setThis(Vec vec){
         this.x = vec.x;
