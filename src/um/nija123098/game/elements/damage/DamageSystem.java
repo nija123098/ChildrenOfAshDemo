@@ -13,14 +13,14 @@ import java.util.Iterator;
  */
 public class DamageSystem implements Tickable {// should make healing easy, may want to
     public Stats stats;
-    public ArrayList<Damage> damage;
+    public ArrayList<HealthModifier> modifiers;
     public DamageSystem(Stats stats){
-        this.damage = new ArrayList<Damage>();
+        this.modifiers = new ArrayList<HealthModifier>();
         this.stats = stats;
     }
     public int getRealDamage(){
         int damage = 0;
-        for (Damage d : this.damage){
+        for (HealthModifier d : this.modifiers){
             damage += d.getRealDamage();
         }
         return damage;
@@ -28,25 +28,23 @@ public class DamageSystem implements Tickable {// should make healing easy, may 
     public boolean isAlive(){
         return this.stats.getLife() >= this.getRealDamage();
     }
-    public void add(Damage damage){
-        this.damage.add(damage);
-        damage.damageSystem = this;
+    public void add(HealthModifier healthModifier){
+        this.modifiers.add(healthModifier);
+        healthModifier.damageSystem = this;
+        healthModifier.inital();
     }
-    public void add(Heal heal){
-        heal.apply(this.damage);
-    }
-    public ArrayList<Damage> getTypes(Damage damage){
-        ArrayList<Damage> list = new ArrayList<Damage>();
-        for (Damage d : this.damage){
-            if (d.getClass() == damage.getClass()){
-                list.add(d);
+    public ArrayList<HealthModifier> getTypes(HealthModifier modifier){
+        ArrayList<HealthModifier> list = new ArrayList<HealthModifier>();
+        for (HealthModifier m : this.modifiers){
+            if (m.getClass() == modifier.getClass()){
+                list.add(m);
             }
         }
         return list;
     }
     public ArrayList getTypes(String className){
-        ArrayList<Damage> list = new ArrayList<Damage>();
-        for (Damage d : this.damage){
+        ArrayList<HealthModifier> list = new ArrayList<HealthModifier>();
+        for (HealthModifier d : this.modifiers){
             if (d.getClass().getName().equals(className)){
                 list.add(d);
             }
@@ -55,9 +53,11 @@ public class DamageSystem implements Tickable {// should make healing easy, may 
     }
     @Override
     public void tick(){
-        Iterator<Damage> i = this.damage.iterator();
+        Iterator<HealthModifier> i = this.modifiers.iterator();
         while (i.hasNext()){
-            if (!i.next().isValid()){// perhaps make
+            HealthModifier m;
+            if (!(m = i.next()).isValid()){// perhaps make
+                m.end();
                 i.remove();
             }
         }

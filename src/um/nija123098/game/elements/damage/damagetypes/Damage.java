@@ -15,7 +15,4 @@ public class Damage extends HealthModifier{
     public int getRealDamage(){
         return this.mod;
     }
-    public boolean isValid(){
-        return this.mod > -1;
-    }
 }

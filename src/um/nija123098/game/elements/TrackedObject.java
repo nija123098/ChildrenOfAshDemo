@@ -8,8 +8,14 @@ import java.util.ArrayList;
  * Made by Dev on 1/23/2016
  */
 public class TrackedObject {
+    private static int currentTrackingNumber = 0;
+    private int trackingNumber;
     public TrackedObject(){
+        this.trackingNumber = ++currentTrackingNumber;
         trackedObjects.add(this);
+    }
+    public boolean is(TrackedObject object){
+        return this.trackingNumber == object.trackingNumber;
     }
     private static ArrayList<TrackedObject> trackedObjects = new ArrayList<TrackedObject>(50);
     public static void tickAll(){//may not tick in a desired pattern

@@ -7,7 +7,7 @@ import um.nija123098.game.elements.locationed.DungeonObject;
 /**
  * Made by Dev on 1/23/2016
  */
-public abstract class Effect extends NamedObject implements Tickable{
+public abstract class Effect extends NamedObject {
     public DungeonObject source, target;
     public Effect(String name, DungeonObject source, DungeonObject target) {
         super(name + " Effect");
@@ -15,7 +15,8 @@ public abstract class Effect extends NamedObject implements Tickable{
         this.target = target;
     }
     public abstract boolean isValid();
-    public abstract void effect();
-    //public abstract void tick();
-    public abstract void unEffect();
+    public void effect(){
+    }
+    public void unEffect(){
+    }
 }

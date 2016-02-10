@@ -12,19 +12,18 @@ public class Heal extends HealthModifier{
     public Heal(String name, int heal){
         super(name + " Heal", heal);
     }
+    @Override
+    public int getRealDamage() {
+        return -this.getMod()/16;
+    }
     public Heal(int heal){
         super("Heal", heal);
     }
-    public boolean isValid(){
-        return true;
-    }
-    public void apply(ArrayList<Damage> damage) {
-        for (Damage d :
-                damage) {
-            d.mod -= this.mod;
-            if (d.mod < 0){
-                this.mod = 0;
-                this.mod = -d.mod;
+    public void apply(ArrayList<HealthModifier> modifiers) {
+        for (HealthModifier modifier : modifiers) {
+            modifier.addMod(-this.getMod());
+            if (modifier.getMod() < 0){
+                this.setMod(-modifier.getMod());
             }
         }
     }

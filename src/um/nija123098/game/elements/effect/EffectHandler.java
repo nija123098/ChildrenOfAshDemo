@@ -10,7 +10,7 @@ import java.util.Iterator;
  * Made by Dev on 1/23/2016
  */
 public class EffectHandler implements Tickable{
-    public DungeonObject object;
+    public DungeonObject object;// may want to mix this and the damage system and the structure system together
     public ArrayList<Effect> effects;
     public EffectHandler(DungeonObject object){
         this.object = object;
