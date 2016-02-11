@@ -10,9 +10,6 @@ public class NamedObject extends TrackedObject{
         this.TRUE_NAME = name;
         this.name = name;
     }
-    public boolean is(NamedObject namedObject){
-        return this.equals(namedObject);
-    }
     public boolean isType(NamedObject namedObject){
         return this.TRUE_NAME.equals(namedObject.TRUE_NAME);
     }

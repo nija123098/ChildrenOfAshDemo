@@ -1,8 +1,7 @@
 package um.nija123098.game.elements.damage;
 
+import um.nija123098.game.elements.NamedObject;
 import um.nija123098.game.elements.Tickable;
-import um.nija123098.game.elements.damage.damagetypes.Damage;
-import um.nija123098.game.elements.damage.healingtypes.Heal;
 import um.nija123098.game.elements.living.Stats;
 
 import java.util.ArrayList;
@@ -42,10 +41,10 @@ public class DamageSystem implements Tickable {// should make healing easy, may 
         }
         return list;
     }
-    public ArrayList getTypes(String className){
+    public ArrayList<HealthModifier> getTypes(NamedObject namedObject){
         ArrayList<HealthModifier> list = new ArrayList<HealthModifier>();
         for (HealthModifier d : this.modifiers){
-            if (d.getClass().getName().equals(className)){
+            if (namedObject.isType(namedObject)){
                 list.add(d);
             }
         }
