@@ -1,9 +1,9 @@
 package um.nija123098.game.elements.locationed;
 
 import basicjavautillibrary.um.nija123098.math.geometry.Point;
+import basicjavautillibrary.um.nija123098.math.geometry.Vec;
 import um.nija123098.game.elements.floor.Floor;
 import um.nija123098.game.elements.level.Level;
-import um.nija123098.resorce.Vec;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,11 +15,10 @@ public class Location implements Cloneable/*DegreeComparable<Location>*/{
     public float direction = new Random().nextFloat() % 360;
     public Vec vec = new Vec(0f, 0f);
     public Level level;
-    public double x, y;
+    public Point location;
     public Location(Level level, double x, double y){
         this.level = level;
-        this.x = x;
-        this.y = y;
+        this.location = new Point(x, y);
     }
     public Location(Level level, Point point){
         this(level, point.getX(), point.getY());
@@ -28,14 +27,13 @@ public class Location implements Cloneable/*DegreeComparable<Location>*/{
         return this.getDistance(location) < distance;
     }
     public float getDistance(Location location){
-        return (float) Math.pow(Math.pow(location.x - this.x, 2) + Math.pow(location.y - this.y, 2), .5);
+        return (float) Math.pow(Math.pow(location.location.getX() - this.location.getY(), 2) + Math.pow(location.location.getX() - this.location.getY(), 2), .5);
     }
     public ArrayList<DungeonObject> objectsAt(){
         return this.level.objectsAt(this);
     }
     public void move(Vec vec){
-        this.x += vec.x;
-        this.y += vec.y;
+        this.location.translate(vec);
     }
     public void move(){
         this.move(this.vec);
@@ -51,7 +49,7 @@ public class Location implements Cloneable/*DegreeComparable<Location>*/{
         }
     }
     public float getDirection(){
-        float d = (int) this.vec.angle();
+        float d = (int) this.vec.getAngle().getValue();
         if (d == 0){
             d = this.direction;
         }

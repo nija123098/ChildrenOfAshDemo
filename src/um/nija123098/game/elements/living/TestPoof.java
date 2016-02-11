@@ -1,11 +1,11 @@
 package um.nija123098.game.elements.living;
 
+import basicjavautillibrary.um.nija123098.math.geometry.Vec;
 import um.nija123098.game.elements.item.equipable.equipmentsystem.position.Position;
 import um.nija123098.game.elements.living.body.Body;
 import um.nija123098.game.elements.living.inventory.Inventory;
 import um.nija123098.game.elements.locationed.Location;
 import um.nija123098.game.elements.structure.Structure;
-import um.nija123098.resorce.Vec;
 
 import java.util.Random;
 

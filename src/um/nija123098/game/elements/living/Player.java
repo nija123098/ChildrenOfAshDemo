@@ -1,7 +1,6 @@
 package um.nija123098.game.elements.living;
 
 import um.nija123098.game.elements.locationed.Location;
-import um.nija123098.resorce.Vec;
 import um.nija123098.test.TestComponent;
 
 /**

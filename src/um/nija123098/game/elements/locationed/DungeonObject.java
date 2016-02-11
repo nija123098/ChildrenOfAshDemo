@@ -1,13 +1,14 @@
 package um.nija123098.game.elements.locationed;
 
 import basicjavautillibrary.um.nija123098.math.geometry.Point;
+import basicjavautillibrary.um.nija123098.math.geometry.Vec;
 import um.nija123098.game.elements.NamedObject;
+import um.nija123098.game.elements.Setting;
 import um.nija123098.game.elements.actionmethod.ActionMethod;
 import um.nija123098.game.elements.damage.DamageSystem;
 import um.nija123098.game.elements.effect.EffectHandler;
 import um.nija123098.game.elements.item.Item;
 import um.nija123098.game.elements.structure.Structure;
-import um.nija123098.resorce.Vec;
 
 import java.util.ArrayList;
 
@@ -28,7 +29,7 @@ public abstract class DungeonObject extends NamedObject/*, DegreeComparable<Dung
         this.structure.object = this;
     }
     public boolean objectContact(DungeonObject origin){
-        Location l = origin.location.clone();
+        Location l = origin.location.clone();// todo fix, pending library update
         l.vec.add(l.vec.along(PRECISION));// there is probably something wrong with this
         if (l.getFloor()==null){
             return false;
@@ -51,7 +52,7 @@ public abstract class DungeonObject extends NamedObject/*, DegreeComparable<Dung
     }
     public void methodContacted(ActionMethod actionMethod){
     }// for immunity to certain AMs
-    //@Setting
+    @Setting
     public static final float PRECISION = .5f;
     /**
      * This is where all collision takes place.
@@ -61,26 +62,28 @@ public abstract class DungeonObject extends NamedObject/*, DegreeComparable<Dung
     public void commonTick(){// todo apply this.objectContact(), likely requires rewrite of that method
         ArrayList<DungeonObject> dungeonObjects = this.location.getNearObjects(this.structure.getSize(), false);
         boolean stoped = false;
-        for (float i = this.location.vec.mag(); i < -PRECISION+.0001f; i = i-PRECISION) {
+        for (double i = this.location.vec.getMag(); i < -PRECISION+.0001f; i = i-PRECISION) {
             for (DungeonObject dungeonObject : dungeonObjects){
                 if (!dungeonObject.objectContacted(this, dungeonObjects)){
                     stoped = true;
                 }
             }
-            this.location.move(this.location.vec.along(PRECISION));
+            Vec v = this.location.vec.clone();// todo update, pending library update
+            v.setMag(PRECISION);
+            this.location.move(v);
             if (!stoped){
                 break;
             }
         }
-        this.location.vec.change(this.slideFactor);
+        this.location.vec.setMag(this.slideFactor);
     }
     public float getDistance(Location location) {
-        return (float) Math.pow(Math.pow(location.x - this.location.x, 2) + Math.pow(location.y - this.location.y, 2) ,.5);
+        return (float) Math.pow(Math.pow(location.location.getX() - this.location.location.getX(), 2) + Math.pow(location.location.getY() - this.location.location.getY(), 2) ,.5);
     }
     public void throwObject(Vec vec){
         this.location.level.objects.add(this);
         this.location = this.location.clone();
-        this.location.vec.add(vec);
+        this.location.vec = new Vec(vec.getX() + this.location.vec.getX(), vec.getY() + this.location.vec.getY());
     }
     public ArrayList<ActionMethod> getActionMethods(boolean selected){// may want interface for this
         return null;// todo

@@ -1,5 +1,6 @@
 package um.nija123098.game.elements.level;
 
+import basicjavautillibrary.um.nija123098.math.geometry.Vec;
 import um.nija123098.game.elements.NamedObject;
 import um.nija123098.game.elements.floor.Floor;
 import um.nija123098.game.elements.floor.floors.StoneFloor;
@@ -8,7 +9,6 @@ import um.nija123098.game.elements.item.equipable.equipables.PoofArmor;
 import um.nija123098.game.elements.living.TestPoof;
 import um.nija123098.game.elements.locationed.DungeonObject;
 import um.nija123098.game.elements.locationed.Location;
-import um.nija123098.resorce.Vec;
 import um.nija123098.test.TestComponent;
 
 import java.util.ArrayList;
@@ -51,7 +51,7 @@ public class Level extends NamedObject /*implements Tickable, DegreeComparable<L
         return objectsAt;
     }
     public Floor getFloor(Location location){
-        return this.floor[((int) location.x)][((int) location.y)];
+        return this.floor[((int) location.location.getX())][((int) location.location.getY())];
     }
     public Location getSpawn(){
         return new Location(this, this.floor.length/2, this.floor.length/2);// temp
