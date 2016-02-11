@@ -10,7 +10,7 @@ import java.util.Iterator;
 /**
  * Made by Dev on 1/22/2016
  */
-public class DamageSystem implements Tickable {// should make healing easy, may want to
+public class DamageSystem implements Tickable {
     public Stats stats;
     public ArrayList<HealthModifier> modifiers;
     public DamageSystem(Stats stats){

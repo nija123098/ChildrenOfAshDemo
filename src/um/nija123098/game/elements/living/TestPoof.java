@@ -3,8 +3,8 @@ package um.nija123098.game.elements.living;
 import um.nija123098.game.elements.item.equipable.equipmentsystem.position.Position;
 import um.nija123098.game.elements.living.body.Body;
 import um.nija123098.game.elements.living.inventory.Inventory;
-import um.nija123098.game.elements.locationed.DungeonObject;
 import um.nija123098.game.elements.locationed.Location;
+import um.nija123098.game.elements.structure.Structure;
 import um.nija123098.resorce.Vec;
 
 import java.util.Random;
@@ -15,7 +15,7 @@ import java.util.Random;
 public class TestPoof extends Living{
     int flat = 0;
     public TestPoof(Location location) {
-        super("Test Poof", location, new Stats(), new Inventory(1), new Body(null, new Position[]{}));
+        super("Test Poof", location, new Structure(), new Stats(), new Inventory(1), new Body(null, new Position[]{}));
         this.body.living = this;
     }
     @Override

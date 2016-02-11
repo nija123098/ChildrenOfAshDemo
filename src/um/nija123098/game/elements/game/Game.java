@@ -17,7 +17,7 @@ public class Game{
     @TestComponent
     public Game(){
         this.dungeon = new Dungeon();
-        this.player = new Player(dungeon.levels[0].getSpawn());
+        this.player = new Player(this.dungeon.levels.get(0).getSpawn());
     }
 
 }

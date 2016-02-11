@@ -2,9 +2,11 @@ package um.nija123098.game.elements.structure;
 
 import basicjavautillibrary.um.nija123098.math.UtilMath;
 import basicjavautillibrary.um.nija123098.math.geometry.Shape;
+import basicjavautillibrary.um.nija123098.math.geometry.Shapes.Circle;
 import um.nija123098.game.elements.Setting;
 import um.nija123098.game.elements.Tickable;
 import um.nija123098.game.elements.locationed.DungeonObject;
+import um.nija123098.test.TestComponent;
 
 import java.util.ArrayList;
 
@@ -22,6 +24,10 @@ public class Structure implements Tickable{
         this.hardness = hardness;
         this.temper = temper;
         this.shape = shape;
+    }
+    @TestComponent
+    public Structure(){
+        this(1, 1, 1, new Circle(.5d));
     }
     @Setting// should be half the desired vale because of double exchange of both object going to the other
     public static final int CONVECTION_CONSTANT = 5;

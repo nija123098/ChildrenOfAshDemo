@@ -2,7 +2,6 @@ package um.nija123098.game.elements.effect.effects;
 
 import um.nija123098.game.elements.damage.HealthModifier;
 import um.nija123098.game.elements.effect.Effect;
-import um.nija123098.game.elements.living.Living;
 import um.nija123098.game.elements.locationed.DungeonObject;
 
 /**
@@ -20,7 +19,7 @@ public class HealthModifyerEffect extends Effect{
     }
     @Override
     public void effect() {
-        ((Living) this.target).damageSystem.add(this.modifier);
+        this.target.damageSystem.add(this.modifier);
     }
     @Override
     public void unEffect() {

@@ -3,17 +3,18 @@ package um.nija123098.game.elements.item.special.moduler;
 import um.nija123098.game.elements.item.special.State;
 import um.nija123098.game.elements.locationed.DungeonObject;
 import um.nija123098.game.elements.locationed.Location;
+import um.nija123098.game.elements.structure.Structure;
 
 import java.util.ArrayList;
 
 /**
  * Made by Dev on 1/24/2016
  */
-public abstract class ModularBase extends DungeonObject{
+public abstract class ModularBase extends DungeonObject{// all extensions of this should be discontinued until system completion
     public ModularBase[] nearBases;
     public ArrayList<State> states;
-    public ModularBase(String name, Location location, ModularBase...nearBases) {
-        super(name + " Modular Base", location);
+    public ModularBase(String name, Location location, Structure structure, ModularBase...nearBases) {
+        super(name + " Modular Base", location, structure);
         this.nearBases = nearBases;
     }//---------------------------!
     public void addState(State state){

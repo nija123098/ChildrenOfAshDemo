@@ -16,5 +16,4 @@ public class PoofArmor extends Equipable{
     public PoofArmor(Location location) {
         super("Poof Armor", location, new Placement(new PositionRig[]{}), new Structure(1, 1, 1, new Rectangle(.7d, .7d)));
     }
-
 }

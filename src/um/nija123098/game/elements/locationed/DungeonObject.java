@@ -2,8 +2,9 @@ package um.nija123098.game.elements.locationed;
 
 import basicjavautillibrary.um.nija123098.math.geometry.Point;
 import um.nija123098.game.elements.NamedObject;
-import um.nija123098.game.elements.Tickable;
 import um.nija123098.game.elements.actionmethod.ActionMethod;
+import um.nija123098.game.elements.damage.DamageSystem;
+import um.nija123098.game.elements.effect.EffectHandler;
 import um.nija123098.game.elements.item.Item;
 import um.nija123098.game.elements.structure.Structure;
 import um.nija123098.resorce.Vec;
@@ -13,11 +14,13 @@ import java.util.ArrayList;
 /**
  * Made by Dev on 12/19/2015
  */
-public abstract class DungeonObject extends NamedObject implements Tickable/*, DegreeComparable<DungeonObject>*/{// todo re apply override methods to various objects
+public abstract class DungeonObject extends NamedObject/*, DegreeComparable<DungeonObject>*/{
     public float slideFactor = .9f;// todo get slide factor based on objects around it, could return 0f instead of bool to indicate stop, would require this variable still though
     public Point focused = new Point(0d, 0d);
     public Location location;
     public Structure structure;
+    public EffectHandler effectHandler;
+    public DamageSystem damageSystem;
     public DungeonObject(String name, Location location, Structure structure){
         super(name);
         this.location = location;
