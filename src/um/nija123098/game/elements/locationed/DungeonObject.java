@@ -30,6 +30,10 @@ public abstract class DungeonObject extends NamedObject/*, DegreeComparable<Dung
     }
     public boolean objectContact(DungeonObject origin){
         Location l = origin.location.clone();// todo fix, pending library update
+        Point point = new Point(l.location.getX(), l.location.getY());
+        Vec v = new Vec(l.vec.getX(), l.vec.getY());
+        v.setMag(PRECISION);
+        point.translate(v);
         l.vec.add(l.vec.along(PRECISION));// there is probably something wrong with this
         if (l.getFloor()==null){
             return false;

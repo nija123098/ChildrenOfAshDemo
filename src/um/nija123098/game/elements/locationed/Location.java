@@ -42,7 +42,7 @@ public class Location implements Cloneable/*DegreeComparable<Location>*/{
         return this.level.getFloor(this);
     }
     public Location clone(){
-        try {
+        try {// todo make deep copy
             return (Location) super.clone();
         } catch (CloneNotSupportedException e) {
             return null;
