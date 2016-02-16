@@ -27,11 +27,19 @@ public class TestRace extends Race{
         return new AdvancedArray<>();
     }
     @Override
-    public Range getHeight(Sex sex, BodyType bodyType) {
+    public AdvancedArray<Sex> getPossibleSexes() {
+        return new AdvancedArray<Sex>(Sex.FEMALE, Sex.MALE);
+    }
+    @Override
+    public AdvancedArray<BodyType> getPossibleBodyTypes(Sex sex) {
+        return new AdvancedArray<BodyType>(BodyType.ATHLETIC, BodyType.BURLY, BodyType.THICK, BodyType.NORMAL);
+    }
+    @Override
+    public Range getHeightRange(Sex sex, BodyType bodyType) {
         return new NotARangeRange(1);
     }
     @Override
-    public Range getWeight(Sex sex, BodyType bodyType) {
+    public Range getWeightRange(Sex sex, BodyType bodyType) {
         return new NotARangeRange(1);
     }
 }

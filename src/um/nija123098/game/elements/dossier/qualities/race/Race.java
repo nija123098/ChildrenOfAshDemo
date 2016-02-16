@@ -12,11 +12,11 @@ import um.nija123098.game.elements.dossier.qualities.Stats;
  * Made by Dev on 2/13/2016
  */
 public abstract class Race {
-    public double strengthFactor;
-    public double constitutionFactor;
-    public double charisma;
-    public double agilityFactor;
-    public double intelligenceFactor;
+    private double strengthFactor;
+    private double constitutionFactor;
+    private double charisma;
+    private double agilityFactor;
+    private double intelligenceFactor;
     public Stats bonusStats;
     public Race(double strengthFactor, double constitutionFactor, double charisma, double agilityFactor, double intelligenceFactor, Stats bonusStats){
         this.strengthFactor = strengthFactor;
@@ -46,6 +46,9 @@ public abstract class Race {
     }
     public abstract Body getBody(Sex sex, BodyType bodyType);
     public abstract AdvancedArray<Quirk> getQuirks();
-    public abstract Range getHeight(Sex sex, BodyType bodyType);
-    public abstract Range getWeight(Sex sex, BodyType bodyType);
+    public abstract Range getHeightRange(Sex sex, BodyType bodyType);
+    public abstract Range getWeightRange(Sex sex, BodyType bodyType);
+    public abstract AdvancedArray<Sex> getPossibleSexes();
+    public abstract AdvancedArray<BodyType> getPossibleBodyTypes(Sex sex);
+    // I have no idea why sex would be passed as a parameter
 }

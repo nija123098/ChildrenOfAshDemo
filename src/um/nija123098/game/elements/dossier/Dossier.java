@@ -7,20 +7,22 @@ import um.nija123098.game.elements.dossier.qualities.Quirk;
 import um.nija123098.game.elements.dossier.qualities.Sex;
 import um.nija123098.game.elements.dossier.qualities.Stats;
 import um.nija123098.game.elements.dossier.qualities.race.Race;
+import um.nija123098.game.elements.level.Level;
+import um.nija123098.resorce.Rand;
 
 /**
  * Made by Dev on 2/13/2016
  */
 public class Dossier extends NamedObject {
     private int level;
-    private int height;
-    private int weight;
+    private double height;
+    private double weight;
     private Sex sex;
     private Race race;
     private Stats stats;
     private BodyType bodyType;
     private AdvancedArray<Quirk> quirks;
-    public Dossier(String name, int level, int height, int weight, Sex sex, Race race, Stats stats, BodyType bodyType, AdvancedArray<Quirk> quirks){
+    public Dossier(String name, int level, int height, int weight, Sex sex, Race race, Stats stats, BodyType bodyType, Quirk...quirks){
         super(name + " Dossier");
         this.level = level;
         this.height = height;
@@ -29,7 +31,18 @@ public class Dossier extends NamedObject {
         this.race = race;
         this.stats = stats;
         this.bodyType = bodyType;
-        this.quirks = quirks;
+        this.quirks = new AdvancedArray<Quirk>(quirks);
+    }
+    public Dossier(String name, int level, Race race, Stats stats, Quirk...quirks){
+        super(name);
+        this.level = level;
+        this.race = race;
+        this.sex = this.race.getPossibleSexes().getRandom();
+        this.bodyType = this.race.getPossibleBodyTypes(this.sex).getRandom();
+        this.height = this.race.getHeightRange(this.sex, this.bodyType).getRandom();
+        this.weight = this.race.getWeightRange(this.sex, this.bodyType).getRandom();
+        this.stats = stats;
+        this.quirks = new AdvancedArray<Quirk>(quirks);
     }
     public void levelUp(){
         ++this.level;
@@ -37,10 +50,10 @@ public class Dossier extends NamedObject {
     public int getLevel() {
         return this.level;
     }
-    public int getHeight() {
+    public double getHeight() {
         return this.height;
     }
-    public int getWeight() {
+    public double getWeight() {
         return this.weight;
     }
     public Sex getSex() {
