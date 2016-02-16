@@ -1,17 +1,18 @@
-package um.nija123098.game.elements.living.body;
+package um.nija123098.game.elements.body;
 
+import um.nija123098.game.elements.NamedObject;
+import um.nija123098.game.elements.body.position.Position;
 import um.nija123098.game.elements.item.equipable.Equipable;
-import um.nija123098.game.elements.item.equipable.equipmentsystem.position.Position;
 import um.nija123098.game.elements.living.Living;
 
 /**
  * Made by Dev on 12/27/2015
  */
-public class Body {
+public class Body extends NamedObject {
     public Living living;
     public Position[] positions;
-    public Body(Living living, Position[] positions){
-        this.living = living;
+    public Body(String name, Position...positions){
+        super(name);
         this.positions = positions;
     }
     public boolean canEquip(Equipable equipable){

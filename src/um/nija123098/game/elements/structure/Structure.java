@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class Structure implements Tickable{
     public double temp;
     public double hardness;
+    public double brakeThreshold;
     public double temper;// tolerance to heat
     public Shape shape;// does not use the location function, simply the general shape
     public DungeonObject object;
@@ -46,5 +47,12 @@ public class Structure implements Tickable{
     }
     public double getSize(){// should optimize
         return UtilMath.distance(0, 0, this.shape.getLength()/2, this.shape.getWidth());
+    }
+    public void modHardness(double mod){
+        if (this.hardness + mod > this.brakeThreshold){
+            this.hardness += mod;
+        }else{
+            this.hardness = brakeThreshold;
+        }
     }
 }

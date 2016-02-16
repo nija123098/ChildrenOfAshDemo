@@ -1,6 +1,6 @@
-package um.nija123098.game.elements.item.equipable.equipmentsystem.position.positions;
+package um.nija123098.game.elements.body.position.positions;
 
-import um.nija123098.game.elements.item.equipable.equipmentsystem.position.Position;
+import um.nija123098.game.elements.body.position.Position;
 import um.nija123098.test.TestComponent;
 
 /**

@@ -1,8 +1,8 @@
 package um.nija123098.game.elements.item.equipable.equipmentsystem.positionrig.positionrigs;
 
 import um.nija123098.game.elements.item.equipable.equipmentsystem.positionrig.PositionRig;
-import um.nija123098.game.elements.item.equipable.equipmentsystem.position.Position;
-import um.nija123098.game.elements.item.equipable.equipmentsystem.position.positions.PoofPosition;
+import um.nija123098.game.elements.body.position.Position;
+import um.nija123098.game.elements.body.position.positions.PoofPosition;
 import um.nija123098.test.TestComponent;
 
 /**

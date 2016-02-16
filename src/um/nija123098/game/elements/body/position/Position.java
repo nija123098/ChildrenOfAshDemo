@@ -1,4 +1,4 @@
-package um.nija123098.game.elements.item.equipable.equipmentsystem.position;
+package um.nija123098.game.elements.body.position;
 
 import um.nija123098.game.elements.NamedObject;
 import um.nija123098.game.elements.item.equipable.AdditionalMethodVerificationElement;

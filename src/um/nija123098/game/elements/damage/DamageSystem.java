@@ -2,7 +2,7 @@ package um.nija123098.game.elements.damage;
 
 import um.nija123098.game.elements.NamedObject;
 import um.nija123098.game.elements.Tickable;
-import um.nija123098.game.elements.living.Stats;
+import um.nija123098.game.elements.dossier.qualities.Stats;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,7 +25,8 @@ public class DamageSystem implements Tickable {
         return damage;
     }
     public boolean isAlive(){
-        return this.stats.getLife() >= this.getRealDamage();
+        //return this.stats.getLife() >= this.getRealDamage();
+        return 1 >= this.getRealDamage();
     }
     public void add(HealthModifier healthModifier){
         this.modifiers.add(healthModifier);

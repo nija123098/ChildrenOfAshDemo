@@ -27,6 +27,7 @@ public abstract class DungeonObject extends NamedObject/*, DegreeComparable<Dung
         this.location = location;
         this.structure = structure;
         this.structure.object = this;
+        this.effectHandler = new EffectHandler(this);
     }
     public boolean objectContact(DungeonObject origin){
         Location l = origin.location.clone();// todo fix, pending library update
@@ -34,7 +35,6 @@ public abstract class DungeonObject extends NamedObject/*, DegreeComparable<Dung
         Vec v = new Vec(l.vec.getX(), l.vec.getY());
         v.setMag(PRECISION);
         point.translate(v);
-        l.vec.add(l.vec.along(PRECISION));// there is probably something wrong with this
         if (l.getFloor()==null){
             return false;
         }
@@ -65,17 +65,17 @@ public abstract class DungeonObject extends NamedObject/*, DegreeComparable<Dung
      */
     public void commonTick(){// todo apply this.objectContact(), likely requires rewrite of that method
         ArrayList<DungeonObject> dungeonObjects = this.location.getNearObjects(this.structure.getSize(), false);
-        boolean stoped = false;
+        boolean stopped = false;
         for (double i = this.location.vec.getMag(); i < -PRECISION+.0001f; i = i-PRECISION) {
             for (DungeonObject dungeonObject : dungeonObjects){
                 if (!dungeonObject.objectContacted(this, dungeonObjects)){
-                    stoped = true;
+                    stopped = true;
                 }
             }
-            Vec v = this.location.vec.clone();// todo update, pending library update
+            Vec v = new Vec(this.location.location.getX(), this.location.location.getY());
             v.setMag(PRECISION);
             this.location.move(v);
-            if (!stoped){
+            if (!stopped){
                 break;
             }
         }

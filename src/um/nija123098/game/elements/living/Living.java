@@ -1,19 +1,19 @@
 package um.nija123098.game.elements.living;
 
+import um.nija123098.game.elements.body.position.positions.PoofPosition;
 import um.nija123098.game.elements.damage.DamageSystem;
-import um.nija123098.game.elements.living.body.Body;
+import um.nija123098.game.elements.body.Body;
+import um.nija123098.game.elements.dossier.qualities.Stats;
 import um.nija123098.game.elements.living.inventory.Inventory;
 import um.nija123098.game.elements.locationed.DungeonObject;
 import um.nija123098.game.elements.locationed.Location;
 import um.nija123098.game.elements.structure.Structure;
-import um.nija123098.resorce.Rand;
 import um.nija123098.test.TestComponent;
 
 /**
  * Made by Dev on 12/19/2015
  */
 public abstract class Living extends DungeonObject {
-    public boolean male = Rand.getRand(1) != 0;
     public boolean construct = false;
     public Body body;
     public Stats stats;
@@ -27,7 +27,7 @@ public abstract class Living extends DungeonObject {
     }
     @TestComponent
     public Living(Location location){
-        this("LIVING TEST COMPONENT", location, new Structure(), new Stats(), new Inventory(20), new Body(null, null));
+        this("LIVING TEST COMPONENT", location, new Structure(), new Stats(), new Inventory(20), new Body("GENERIC BODY", new PoofPosition()));
         this.body.living = this;
     }
     public boolean isConstruct(){

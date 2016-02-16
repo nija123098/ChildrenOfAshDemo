@@ -2,7 +2,7 @@ package um.nija123098.game.elements.item.equipable.equipmentsystem.positionrig;
 
 import um.nija123098.game.elements.NamedObject;
 import um.nija123098.game.elements.item.equipable.AdditionalMethodVerificationElement;
-import um.nija123098.game.elements.item.equipable.equipmentsystem.position.Position;
+import um.nija123098.game.elements.body.position.Position;
 import um.nija123098.game.elements.living.Living;
 
 /**
