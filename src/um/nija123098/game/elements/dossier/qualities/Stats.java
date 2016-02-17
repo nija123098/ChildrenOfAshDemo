@@ -33,20 +33,15 @@ public class Stats {
         this.intelligence = new int[MAX_LEVEL];
         float strength = strengthFactor;
         float constitution = constitutionFactor;
-        float toughness = charismaFactor;
+        float charisma = charismaFactor;
         float agility = agilityFactor;
         float intelligence = intelligenceFactor;
         for (int lev = 0; lev < MAX_LEVEL; lev++) {
-            strength += strengthFactor;
-            constitution += constitutionFactor;
-            toughness += charismaFactor;
-            agility += agilityFactor;
-            intelligence += intelligenceFactor;
-            this.strength[lev] = (int) strength;
-            this.constitution[lev] = (int) constitution;
-            this.charisma[lev] = (int) toughness;
-            this.agility[lev] = (int) agility;
-            this.intelligence[lev] = (int) intelligence;
+            this.strength[lev] = (int) (strength += strengthFactor);
+            this.constitution[lev] = (int) (constitution += constitutionFactor);
+            this.charisma[lev] = (int) (charisma += charismaFactor);
+            this.agility[lev] = (int) (agility += agilityFactor);
+            this.intelligence[lev] = (int) (intelligence += intelligenceFactor);
         }
     }
     public int getStrength(int level){
