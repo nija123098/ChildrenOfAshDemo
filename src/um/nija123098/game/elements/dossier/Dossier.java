@@ -7,12 +7,12 @@ import um.nija123098.game.elements.dossier.qualities.Quirk;
 import um.nija123098.game.elements.dossier.qualities.Sex;
 import um.nija123098.game.elements.dossier.qualities.Stats;
 import um.nija123098.game.elements.dossier.qualities.race.Race;
-import um.nija123098.game.elements.level.Level;
-import um.nija123098.resorce.Rand;
+import um.nija123098.test.TestComponent;
 
 /**
  * Made by Dev on 2/13/2016
  */
+@TestComponent
 public class Dossier extends NamedObject {
     private int level;
     private double height;
@@ -88,7 +88,6 @@ public class Dossier extends NamedObject {
         return (int) (this.stats.getIntelligence(this.level) + this.race.getStatsBonus().getIntelligence(this.level) *
                 (this.sex.getIntelligenceFactor() + this.race.getIntelligenceFactor() + this.bodyType.getIntelligenceFactor() + 1.d));
     }
-    //
     public int getLife(){
         return (int) (this.getStrength() * .5 + this.getCharisma() * .2 + this.getConstitution() * .2 + this.getAgility() * .1);
     }

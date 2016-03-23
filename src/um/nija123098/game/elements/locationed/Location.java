@@ -1,18 +1,18 @@
 package um.nija123098.game.elements.locationed;
 
+import basicjavautillibrary.um.nija123098.math.geometry.Angle;
 import basicjavautillibrary.um.nija123098.math.geometry.Point;
 import basicjavautillibrary.um.nija123098.math.geometry.Vec;
 import um.nija123098.game.elements.floor.Floor;
 import um.nija123098.game.elements.level.Level;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Made by Dev on 12/19/2015
  */
 public class Location implements Cloneable/*DegreeComparable<Location>*/{
-    public float direction = new Random().nextFloat() % 360;
+    public Angle angle = new Angle();
     public Vec vec = new Vec(0f, 0f);
     public Level level;
     public Point location;
@@ -48,10 +48,10 @@ public class Location implements Cloneable/*DegreeComparable<Location>*/{
             return null;
         }
     }
-    public float getDirection(){
-        float d = (int) this.vec.getAngle().getValue();
+    public double getDirection(){
+        double d = (int) this.vec.getAngle().getValue();
         if (d == 0){
-            d = this.direction;
+            d = this.angle.getValue();
         }
         return d;
     }

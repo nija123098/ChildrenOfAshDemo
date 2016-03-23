@@ -48,7 +48,7 @@ public abstract class DungeonObject extends NamedObject/*, DegreeComparable<Dung
         }
         return result;
     }
-    public boolean objectContacted(DungeonObject origin, ArrayList<DungeonObject> affected){
+    public boolean objectContacted(DungeonObject origin, ArrayList<DungeonObject> affected){// what does this mean?
         return origin instanceof Item;
     }
     public void methodContact(ActionMethod actionMethod){// when this attacks that
@@ -79,7 +79,7 @@ public abstract class DungeonObject extends NamedObject/*, DegreeComparable<Dung
                 break;
             }
         }
-        this.location.vec.setMag(this.slideFactor);
+        this.location.vec.setMag(this.slideFactor);// todo fix this
     }
     public float getDistance(Location location) {
         return (float) Math.pow(Math.pow(location.location.getX() - this.location.location.getX(), 2) + Math.pow(location.location.getY() - this.location.location.getY(), 2) ,.5);
