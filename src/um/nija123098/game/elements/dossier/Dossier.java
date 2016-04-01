@@ -7,14 +7,12 @@ import um.nija123098.game.elements.dossier.qualities.Quirk;
 import um.nija123098.game.elements.dossier.qualities.Sex;
 import um.nija123098.game.elements.dossier.qualities.Stats;
 import um.nija123098.game.elements.dossier.qualities.race.Race;
-import um.nija123098.test.TestComponent;
 
 /**
  * Made by Dev on 2/13/2016
  */
-@TestComponent
 public class Dossier extends NamedObject {
-    private int level;
+    private int xp;
     private double height;
     private double weight;
     private Sex sex;
@@ -22,9 +20,9 @@ public class Dossier extends NamedObject {
     private Stats stats;
     private BodyType bodyType;
     private AdvancedArray<Quirk> quirks;
-    public Dossier(String name, int level, int height, int weight, Sex sex, Race race, Stats stats, BodyType bodyType, Quirk...quirks){
+    public Dossier(String name, int xp, int height, int weight, Sex sex, Race race, Stats stats, BodyType bodyType, Quirk...quirks){
         super(name + " Dossier");
-        this.level = level;
+        this.xp = xp;
         this.height = height;
         this.weight = weight;
         this.sex = sex;
@@ -33,9 +31,9 @@ public class Dossier extends NamedObject {
         this.bodyType = bodyType;
         this.quirks = new AdvancedArray<Quirk>(quirks);
     }
-    public Dossier(String name, int level, Race race, Stats stats, Quirk...quirks){
+    public Dossier(String name, int xp, Race race, Stats stats, Quirk...quirks){
         super(name);
-        this.level = level;
+        this.xp = xp;
         this.race = race;
         this.sex = this.race.getPossibleSexes().getRandom();
         this.bodyType = this.race.getPossibleBodyTypes(this.sex).getRandom();
@@ -44,11 +42,11 @@ public class Dossier extends NamedObject {
         this.stats = stats;
         this.quirks = new AdvancedArray<Quirk>(quirks);
     }
-    public void levelUp(){
-        ++this.level;
+    public void addXp(int xp){
+        this.xp += xp;
     }
     public int getLevel() {
-        return this.level;
+        return (int) Math.pow(this.xp, -1/3);
     }
     public double getHeight() {
         return this.height;
@@ -69,23 +67,23 @@ public class Dossier extends NamedObject {
         this.quirks.add(quirk);
     }
     public int getStrength(){
-        return (int) ((this.stats.getStrength(this.level) + this.race.getStatsBonus().getStrength(this.level)) *
+        return (int) ((this.stats.getStrength(this.getLevel()) + this.race.getStatsBonus().getStrength(this.getLevel())) *
                 (this.sex.getStrengthFactor() + this.race.getStrengthFactor() + this.bodyType.getStrengthFactor() + 1.d));
     }
     public int getConstitution(){
-        return (int) (this.stats.getConstitution(this.level) + this.race.getStatsBonus().getConstitution(this.level) *
+        return (int) (this.stats.getConstitution(this.getLevel()) + this.race.getStatsBonus().getConstitution(this.getLevel()) *
                 (this.sex.getConstitutionFactor() + this.race.getConstitutionFactor() + this.bodyType.getConstitutionFactor() + 1.d));
     }
     public int getCharisma(){
-        return (int) (this.stats.getCharisma(this.level) + this.race.getStatsBonus().getCharisma(this.level) *
+        return (int) (this.stats.getCharisma(this.getLevel()) + this.race.getStatsBonus().getCharisma(this.getLevel()) *
                 (this.sex.getCharismaFactor() + this.race.getCharismaFactor() + this.bodyType.getCharismaFactor() + 1.d));
     }
     public int getAgility(){
-        return (int) (this.stats.getAgility(this.level) + this.race.getStatsBonus().getAgility(this.level) *
+        return (int) (this.stats.getAgility(this.getLevel()) + this.race.getStatsBonus().getAgility(this.getLevel()) *
                 (this.sex.getAgilityFactor() + this.race.getAgilityFactor() + this.bodyType.getAgilityFactor() + 1.d));
     }
     public int getIntelligence(){
-        return (int) (this.stats.getIntelligence(this.level) + this.race.getStatsBonus().getIntelligence(this.level) *
+        return (int) (this.stats.getIntelligence(this.getLevel()) + this.race.getStatsBonus().getIntelligence(this.getLevel()) *
                 (this.sex.getIntelligenceFactor() + this.race.getIntelligenceFactor() + this.bodyType.getIntelligenceFactor() + 1.d));
     }
     public int getLife(){
