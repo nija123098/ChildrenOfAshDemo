@@ -1,15 +1,9 @@
 package um.nija123098.game.elements.level;
 
-import basicjavautillibrary.um.nija123098.math.geometry.Vec;
 import um.nija123098.game.elements.NamedObject;
 import um.nija123098.game.elements.floor.Floor;
-import um.nija123098.game.elements.floor.floors.StoneFloor;
-import um.nija123098.game.elements.floor.walls.StoneWall;
-import um.nija123098.game.elements.item.equipable.equipables.PoofArmor;
-import um.nija123098.game.elements.living.TestPoof;
 import um.nija123098.game.elements.locationed.DungeonObject;
 import um.nija123098.game.elements.locationed.Location;
-import um.nija123098.test.TestComponent;
 
 import java.util.ArrayList;
 
@@ -23,7 +17,7 @@ public class Level extends NamedObject /*implements Tickable, DegreeComparable<L
         super(name);
         this.floor = floor;
         this.objects = objects;
-    }
+    }/*
     @TestComponent
     public Level(){
         this("Some non uniquely named level", new Floor[10][10], new ArrayList<DungeonObject>(2));
@@ -40,11 +34,11 @@ public class Level extends NamedObject /*implements Tickable, DegreeComparable<L
         PoofArmor poofArmor = new PoofArmor(new Location(this, 5, 5));
         poofArmor.throwObject(new Vec(1f, 1f));
         this.objects.add(poofArmor);
-    }
+    }*/
     public ArrayList<DungeonObject> objectsAt(Location location){
         ArrayList<DungeonObject> objectsAt = new ArrayList<DungeonObject>(2);
         for (DungeonObject dungeonObject : this.objects){
-            if (dungeonObject.location.withinDistance(location, dungeonObject.structure.getSize())){
+            if (dungeonObject.getLocation().withinDistance(location, dungeonObject.getSize())){
                 objectsAt.add(dungeonObject);
             }
         }

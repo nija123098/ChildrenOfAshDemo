@@ -21,7 +21,7 @@ public class Interface{
     public static final float RANGE = 1f;
     public static DungeonObject getSelected(boolean floorsCount){
         DungeonObject d = getClosest(floorsCount);
-        if (d.getDistance(getPlayer().location) <= RANGE){
+        if (d.getDistance(getPlayer().getLocation()) <= RANGE){
             return isInterfacingWorld() ? getClosest(floorsCount) : getInventorySelected();
         }
         return null;

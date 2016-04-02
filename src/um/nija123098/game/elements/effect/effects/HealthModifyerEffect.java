@@ -19,7 +19,7 @@ public class HealthModifyerEffect extends Effect{
     }
     @Override
     public void effect() {
-        this.target.damageSystem.add(this.modifier);
+        this.target.getDamageSystem().add(this.modifier);
     }
     @Override
     public void unEffect() {

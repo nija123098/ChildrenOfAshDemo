@@ -2,16 +2,16 @@ package um.nija123098.game.elements.dossier;
 
 import basicjavautillibrary.um.nija123098.general.AdvancedArray;
 import um.nija123098.game.elements.NamedObject;
-import um.nija123098.game.elements.dossier.qualities.BodyType;
-import um.nija123098.game.elements.dossier.qualities.Quirk;
-import um.nija123098.game.elements.dossier.qualities.Sex;
-import um.nija123098.game.elements.dossier.qualities.Stats;
-import um.nija123098.game.elements.dossier.qualities.race.Race;
+import um.nija123098.game.elements.living.qualities.BodyType;
+import um.nija123098.game.elements.living.qualities.Quirk;
+import um.nija123098.game.elements.living.qualities.Sex;
+import um.nija123098.game.elements.living.qualities.Stats;
+import um.nija123098.game.elements.living.qualities.race.Race;
 
 /**
  * Made by Dev on 2/13/2016
  */
-public class Dossier extends NamedObject {
+public class Dossier extends NamedObject {// placed for reference
     private int xp;
     private double height;
     private double weight;

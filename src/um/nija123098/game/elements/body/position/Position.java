@@ -18,10 +18,10 @@ public class Position extends NamedObject{
         this(name, 1);
     }
     public boolean canEquip(Living living) {
-        for (int item = 0; item < living.inventory.container.items.size(); item++) {
-            if (living.inventory.equippedIndex.contains(item)){
+        for (int item = 0; item < living.getInventory().container.items.size(); item++) {
+            if (living.getInventory().equippedIndex.contains(item)){
                 int positionStackCount = 0;
-                for (Position position : ((Equipable) living.inventory.container.items.get(item)).placement.currentPositionRig().positions){
+                for (Position position : ((Equipable) living.getInventory().container.items.get(item)).placement.currentPositionRig().positions){
                     if (position.isType(this)){
                         ++positionStackCount;
                     }

@@ -1,19 +1,9 @@
 package um.nija123098.game.elements.structure;
 
-import basicjavautillibrary.um.nija123098.math.UtilMath;
-import basicjavautillibrary.um.nija123098.math.geometry.Shape;
-import basicjavautillibrary.um.nija123098.math.geometry.Shapes.Circle;
-import um.nija123098.game.elements.Setting;
-import um.nija123098.game.elements.Tickable;
-import um.nija123098.game.elements.locationed.DungeonObject;
-import um.nija123098.test.TestComponent;
-
-import java.util.ArrayList;
-
 /**
  * Made by Dev on 1/31/2016
  */
-public class Structure implements Tickable{
+public class Structure{/* implements Tickable{
     public double temp;
     public double hardness;
     public double brakeThreshold;
@@ -35,10 +25,10 @@ public class Structure implements Tickable{
     @Override
     public void tick() {
         @Setting
-        ArrayList<DungeonObject> objects = object.location.getNearObjects(5f, true);
+        ArrayList<DungeonObject> objects = this.object.getLocation().getNearObjects(5f, true);
         for (DungeonObject dungeonObject : objects){
-            float factor = (float) Math.pow(this.object.location.getDistance(dungeonObject.location), -1);
-            dungeonObject.structure.addTemp(this.temp / CONVECTION_CONSTANT * factor);
+            float factor = (float) Math.pow(this.object.getLocation().getDistance(dungeonObject.getLocation()), -1);
+            dungeonObject.addTemp(this.temp / CONVECTION_CONSTANT * factor);
             this.addTemp(this.temp / CONVECTION_CONSTANT * factor);
         }
     }
@@ -54,5 +44,5 @@ public class Structure implements Tickable{
         }else{
             this.hardness = brakeThreshold;
         }
-    }
+    }*/
 }

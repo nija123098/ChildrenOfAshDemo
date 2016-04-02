@@ -1,14 +1,12 @@
-package um.nija123098.game.elements.dossier.qualities.race.races;
-
 import basicjavautillibrary.um.nija123098.general.AdvancedArray;
 import basicjavautillibrary.um.nija123098.math.algibra.Range;
 import um.nija123098.game.elements.body.Body;
 import um.nija123098.game.elements.body.position.positions.PoofPosition;
-import um.nija123098.game.elements.dossier.qualities.BodyType;
-import um.nija123098.game.elements.dossier.qualities.Quirk;
-import um.nija123098.game.elements.dossier.qualities.Sex;
-import um.nija123098.game.elements.dossier.qualities.race.Race;
-import um.nija123098.game.elements.dossier.qualities.Stats;
+import um.nija123098.game.elements.living.qualities.BodyType;
+import um.nija123098.game.elements.living.qualities.Quirk;
+import um.nija123098.game.elements.living.qualities.Sex;
+import um.nija123098.game.elements.living.qualities.race.Race;
+import um.nija123098.game.elements.living.qualities.Stats;
 import um.nija123098.resorce.NotARangeRange;
 
 /**

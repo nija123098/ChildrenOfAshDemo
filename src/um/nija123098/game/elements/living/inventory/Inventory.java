@@ -26,7 +26,7 @@ public class Inventory extends Container{
         }
     }
     public boolean equip(Item item){
-        return item instanceof Equipable && ((Equipable) item).canEquip(this.living) && (!(this instanceof AdditionalMethodVerificationElement) || ((AdditionalMethodVerificationElement) item).additionalVerification(this.living)) && this.living.body.canEquip(((Equipable) item));
+        return item instanceof Equipable && ((Equipable) item).canEquip(this.living) && (!(this instanceof AdditionalMethodVerificationElement) || ((AdditionalMethodVerificationElement) item).additionalVerification(this.living)) && this.living.getBody().canEquip(((Equipable) item));
     }
     public void unequip(Item item){
         if (this.equippedIndex.contains(this.container.items.indexOf(item)) && !(item instanceof InventoryExpander)){

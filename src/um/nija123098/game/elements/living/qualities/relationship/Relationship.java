@@ -1,4 +1,4 @@
-package um.nija123098.game.elements.dossier.qualities.relationship;
+package um.nija123098.game.elements.living.qualities.relationship;
 
 /**
  * Made by Dev on 2/13/2016

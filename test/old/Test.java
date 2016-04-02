@@ -1,13 +1,9 @@
-import um.nija123098.game.elements.dossier.Dossier;
-import um.nija123098.game.elements.dossier.qualities.BodyType;
-import um.nija123098.game.elements.dossier.qualities.Sex;
-import um.nija123098.game.elements.dossier.qualities.Stats;
-import um.nija123098.game.elements.dossier.qualities.race.races.TestRace;
+package old;
 
 /**
  * Made by Dev on 2/15/2016
  */
-public class Test {
+public class Test {/*
     public static void main(String[] args) {
         int level = 10;
         //Dossier a = new Dossier("d", level, 9, 9, Sex.FEMALE, new TestRace(), new Stats(1,1,1,1,1), BodyType.ATHLETIC);
@@ -29,5 +25,5 @@ public class Test {
         System.out.print(b.getIntelligence());
         System.out.print(" - ");
         System.out.println(a.getIntelligence());
-    }
+    }*/
 }

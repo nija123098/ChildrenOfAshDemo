@@ -1,4 +1,4 @@
-package um.nija123098.game.elements.dossier.qualities;
+package um.nija123098.game.elements.living.qualities;
 
 import um.nija123098.game.elements.Setting;
 import um.nija123098.test.TestComponent;

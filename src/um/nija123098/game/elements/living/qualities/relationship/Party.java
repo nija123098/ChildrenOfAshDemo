@@ -1,6 +1,5 @@
-package um.nija123098.game.elements.dossier.qualities.relationship;
+package um.nija123098.game.elements.living.qualities.relationship;
 
-import basicjavautillibrary.um.nija123098.general.AdvancedArray;
 import um.nija123098.game.elements.locationed.DungeonObject;
 
 /**

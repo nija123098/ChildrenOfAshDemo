@@ -1,4 +1,4 @@
-package um.nija123098.game.elements.dossier.qualities;
+package um.nija123098.game.elements.living.qualities;
 
 /**
  * Made by Dev on 2/14/2016

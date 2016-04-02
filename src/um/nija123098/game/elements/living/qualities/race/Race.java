@@ -1,17 +1,18 @@
-package um.nija123098.game.elements.dossier.qualities.race;
+package um.nija123098.game.elements.living.qualities.race;
 
 import basicjavautillibrary.um.nija123098.general.AdvancedArray;
 import basicjavautillibrary.um.nija123098.math.algibra.Range;
 import um.nija123098.game.elements.body.Body;
-import um.nija123098.game.elements.dossier.qualities.BodyType;
-import um.nija123098.game.elements.dossier.qualities.Quirk;
-import um.nija123098.game.elements.dossier.qualities.Sex;
-import um.nija123098.game.elements.dossier.qualities.Stats;
+import um.nija123098.game.elements.living.qualities.BodyType;
+import um.nija123098.game.elements.living.qualities.Quirk;
+import um.nija123098.game.elements.living.qualities.Sex;
+import um.nija123098.game.elements.living.qualities.Stats;
 
 /**
  * Made by Dev on 2/13/2016
  */
 public abstract class Race {
+    private boolean isConstruct = false;
     private double strengthFactor;
     private double constitutionFactor;
     private double charisma;
@@ -43,6 +44,9 @@ public abstract class Race {
     }
     public Stats getStatsBonus(){
         return this.bonusStats;
+    }
+    public boolean isConstruct(){
+        return this.isConstruct;
     }
     public abstract Body getBody(Sex sex, BodyType bodyType);
     public abstract AdvancedArray<Quirk> getQuirks();

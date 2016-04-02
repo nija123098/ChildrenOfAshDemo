@@ -2,7 +2,6 @@ package um.nija123098.game.elements.damage;
 
 import um.nija123098.game.elements.NamedObject;
 import um.nija123098.game.elements.Tickable;
-import um.nija123098.game.elements.dossier.qualities.Stats;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,11 +10,9 @@ import java.util.Iterator;
  * Made by Dev on 1/22/2016
  */
 public class DamageSystem implements Tickable {
-    public Stats stats;
     public ArrayList<HealthModifier> modifiers;
-    public DamageSystem(Stats stats){
+    public DamageSystem(){
         this.modifiers = new ArrayList<HealthModifier>();
-        this.stats = stats;
     }
     public int getRealDamage(){
         int damage = 0;

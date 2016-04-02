@@ -1,4 +1,4 @@
-package um.nija123098.game.elements.item.equipable.equipables;
+package old;
 
 import basicjavautillibrary.um.nija123098.math.geometry.Shapes.Rectangle;
 import um.nija123098.game.elements.item.equipable.Equipable;

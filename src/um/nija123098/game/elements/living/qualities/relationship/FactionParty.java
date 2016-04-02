@@ -1,4 +1,4 @@
-package um.nija123098.game.elements.dossier.qualities.relationship;
+package um.nija123098.game.elements.living.qualities.relationship;
 
 import um.nija123098.game.elements.faction.Faction;
 import um.nija123098.game.elements.locationed.DungeonObject;
